@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -8,7 +8,7 @@
   <link rel="apple-touch-icon" href="assts/sherif_khalid4.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Cairo:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Cairo:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #050507;
@@ -24,12 +24,16 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Cairo', sans-serif;
+      font-family: 'Plus Jakarta Sans', 'Cairo', sans-serif;
       overflow-x: clip;
       min-height: 100dvh;
       display: flex;
       flex-direction: column;
       position: relative;
+    }
+
+    html[lang="ar"] body {
+      font-family: 'Cairo', 'Plus Jakarta Sans', sans-serif;
     }
 
     /* إنترو افتتاحي للموقع */
@@ -134,7 +138,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 24px;
+      gap: 20px;
       width: 100%;
     }
 
@@ -160,17 +164,23 @@
       border-radius: 6px;
     }
 
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
     nav {
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 26px;
     }
 
     nav a {
       text-decoration: none;
       color: var(--muted);
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.94rem;
       white-space: nowrap;
       transition: color 0.2s ease;
     }
@@ -184,6 +194,26 @@
       color: var(--accent);
     }
 
+    .lang-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #fff;
+      padding: 7px 13px;
+      border-radius: 10px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .lang-btn:hover {
+      border-color: var(--accent);
+      background: rgba(225, 29, 72, 0.14);
+    }
+
     .menu-btn {
       display: none;
       background: rgba(255, 255, 255, 0.06);
@@ -191,7 +221,7 @@
       color: #fff;
       padding: 8px 14px;
       border-radius: 10px;
-      font-family: 'Cairo', sans-serif;
+      font-family: 'Cairo', 'Plus Jakarta Sans', sans-serif;
       font-weight: 800;
       font-size: 0.85rem;
       cursor: pointer;
@@ -206,7 +236,7 @@
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
       gap: 44px;
-      align-items: center;
+      align-items: start;
       margin-bottom: 64px;
     }
 
@@ -214,17 +244,34 @@
       display: block;
       font-size: clamp(3.2rem, 7.5vw, 6.2rem);
       color: #fff;
-      transform-origin: right center;
-      margin-bottom: 20px;
+      transform-origin: left center;
+      margin-bottom: 22px;
       text-shadow: 0 12px 32px rgba(0, 0, 0, 0.7);
     }
 
-    .intro-text {
+    html[dir="rtl"] h1 .hero-title {
+      transform-origin: right center;
+    }
+
+    .bio-block {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      max-width: 600px;
+      margin-bottom: 32px;
+    }
+
+    .bio-heading {
+      font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+
+    .bio-block p {
       color: #e4e4e7;
-      font-size: clamp(1.02rem, 1.4vw, 1.12rem);
-      line-height: 1.9;
-      max-width: 540px;
-      margin-bottom: 34px;
+      font-size: clamp(0.98rem, 1.3vw, 1.06rem);
+      line-height: 1.85;
     }
 
     .stats-inline {
@@ -272,7 +319,6 @@
       margin-top: 24px;
     }
 
-    /* عرض الأغنية بحجم أكبر */
     .track-player {
       width: 100%;
       aspect-ratio: 16 / 9;
@@ -291,7 +337,6 @@
       display: block;
     }
 
-    /* شبكة الصور */
     .photo-stream {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -315,7 +360,6 @@
       opacity: 0.95;
     }
 
-    /* Lightbox */
     .lightbox {
       position: fixed;
       inset: 0;
@@ -347,19 +391,23 @@
     .lightbox-close {
       position: absolute;
       top: 14px;
-      left: 14px;
+      right: 14px;
       padding: 8px 14px;
       border-radius: 10px;
       border: 1px solid var(--line);
       background: rgba(5, 5, 7, 0.88);
       color: #fff;
-      font-family: 'Cairo', sans-serif;
+      font-family: 'Cairo', 'Plus Jakarta Sans', sans-serif;
       font-weight: 800;
       font-size: 0.82rem;
       cursor: pointer;
     }
 
-    /* Footer */
+    html[dir="rtl"] .lightbox-close {
+      right: auto;
+      left: 14px;
+    }
+
     footer.site-footer {
       margin-top: auto;
       border-top: 1px solid var(--line);
@@ -419,7 +467,7 @@
       font-size: 0.84rem;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 960px) {
       .top-intro { grid-template-columns: 1fr; gap: 32px; margin-bottom: 48px; }
       .track-player { min-height: 300px; }
       .photo-stream { grid-template-columns: repeat(2, 1fr); gap: 14px; }
@@ -477,14 +525,17 @@
         <span class="clip-brand-font">SHERIF KHALID</span>
       </a>
 
-      <nav id="navMenu">
-        <a href="index.html" class="active">الرئيسية</a>
-        <a href="works.html">الأعمال والفيديوهات</a>
-        <a href="journey.html">الرحلة</a>
-        <a href="contact.html">التواصل والإعلانات</a>
-      </nav>
+      <div class="nav-right">
+        <nav id="navMenu">
+          <a href="index.html" class="active" data-i18n="navHome">Home</a>
+          <a href="works.html" data-i18n="navWorks">Works & Videos</a>
+          <a href="journey.html" data-i18n="navJourney">Journey</a>
+          <a href="contact.html" data-i18n="navContact">Contact & Bookings</a>
+        </nav>
 
-      <button class="menu-btn" id="menuBtn" type="button">القائمة</button>
+        <button class="lang-btn" id="langBtn" type="button" onclick="toggleLanguage()">AR</button>
+        <button class="menu-btn" id="menuBtn" type="button" data-i18n="menuLabel">Menu</button>
+      </div>
     </div>
   </header>
 
@@ -496,30 +547,42 @@
             <span class="clip-brand-font hero-title">SHERIF KHALID</span>
           </h1>
 
-          <p class="intro-text">
-            حضور جماهيري يتخطى 16 مليون متابع عبر المنصات، وأعمال غنائية وجولات حية. هنا المساحة الرسمية لكل جديد وللتواصل المباشر.
-          </p>
+          <div class="bio-block">
+            <h2 class="bio-heading" data-i18n="bioHeading">Sherif Khalid | شريف خالد</h2>
+            <p data-i18n="bioP1">
+              Sherif Khalid is a 27-year-old Egyptian content creator and influencer born in Al-Amireya, Cairo. He is one of the ambitious young figures who has built a strong presence across social media platforms, especially TikTok.
+            </p>
+            <p data-i18n="bioP2">
+              He started his content creation journey in 2018, and through determination, passion, and ambition, he built a large audience of millions of followers and achieved notable success in the social media space.
+            </p>
+            <p data-i18n="bioP3">
+              His ambitions went beyond content creation into music and performance, taking on diverse experiences that helped diversify his career and expand his reach with audiences.
+            </p>
+            <p data-i18n="bioP4">
+              Sherif Khalid represents an ambitious young creator continuously striving to grow, turn passion and ideas into real achievements, and pursue even greater success and excellence.
+            </p>
+          </div>
 
           <div class="stats-inline">
             <div class="stat-item">
               <strong class="num counter" data-target="12" data-suffix="M+">0</strong>
-              <span>متابع على TikTok</span>
+              <span data-i18n="statTikTok">Followers on TikTok</span>
             </div>
             <div class="stat-item">
               <strong class="num counter" data-target="3" data-suffix="M+">0</strong>
-              <span>متابع على Instagram</span>
+              <span data-i18n="statInsta">Followers on Instagram</span>
             </div>
             <div class="stat-item">
               <strong class="num counter" data-target="1" data-suffix="M+">0</strong>
-              <span>متابع على YouTube</span>
+              <span data-i18n="statYT">Subscribers on YouTube</span>
             </div>
           </div>
         </div>
 
-        <img class="lead-portrait" src="assts/zherif_khalid5.jpg" alt="شريف خالد">
+        <img class="lead-portrait" src="assts/zherif_khalid5.jpg" alt="Sherif Khalid">
       </section>
 
-      <h2 class="flow-title">بابا ياض</h2>
+      <h2 class="flow-title" data-i18n="trackTitle">Baba Yad</h2>
       <div class="track-player">
         <iframe
           src="https://drive.google.com/file/d/1-lU7XJ8MST3x_Mo7UfRbabdMzoVzhFSf/preview"
@@ -528,21 +591,21 @@
         </iframe>
       </div>
 
-      <h2 class="flow-title">الصور</h2>
+      <h2 class="flow-title" data-i18n="galleryTitle">Photos</h2>
       <div class="photo-stream">
-        <img src="assts/sherif_khalid7.jpg" alt="شريف خالد" onclick="openLightbox(this.src)">
-        <img src="assts/sherif_khalid2.jpg" alt="شريف خالد" onclick="openLightbox(this.src)">
-        <img src="assts/sherif_khahid.jpg" alt="شريف خالد" onclick="openLightbox(this.src)">
-        <img src="assts/sherif_khalid4.jpg" alt="شريف خالد" onclick="openLightbox(this.src)">
-        <img src="assts/shreif+khalid6.jpg" alt="شريف خالد" onclick="openLightbox(this.src)">
+        <img src="assts/sherif_khalid7.jpg" alt="Sherif Khalid" onclick="openLightbox(this.src)">
+        <img src="assts/sherif_khalid2.jpg" alt="Sherif Khalid" onclick="openLightbox(this.src)">
+        <img src="assts/sherif_khahid.jpg" alt="Sherif Khalid" onclick="openLightbox(this.src)">
+        <img src="assts/sherif_khalid4.jpg" alt="Sherif Khalid" onclick="openLightbox(this.src)">
+        <img src="assts/shreif+khalid6.jpg" alt="Sherif Khalid" onclick="openLightbox(this.src)">
       </div>
     </div>
   </main>
 
   <div class="lightbox" id="lightbox" onclick="closeLightbox()">
     <div class="lightbox-panel" onclick="event.stopPropagation()">
-      <button type="button" class="lightbox-close" onclick="closeLightbox()">إغلاق</button>
-      <img id="lightboxImg" src="" alt="معاينة الصورة">
+      <button type="button" class="lightbox-close" onclick="closeLightbox()" data-i18n="closeBtn">Close</button>
+      <img id="lightboxImg" src="" alt="Photo Preview">
     </div>
   </div>
 
@@ -553,23 +616,23 @@
           <a href="index.html" class="brand">
             <span class="clip-brand-font">SHERIF KHALID</span>
           </a>
-          <p>
-            الموقع الرسمي لشريف خالد — جمهور يتخطى 16 مليون متابع عبر TikTok وInstagram وYouTube.
+          <p data-i18n="footerDesc">
+            Official Hub for Sherif Khalid — over 16 million followers across TikTok, Instagram, and YouTube.
           </p>
         </div>
 
         <div class="footer-col">
-          <h3>الصفحات</h3>
+          <h3 data-i18n="footerPagesTitle">Pages</h3>
           <ul class="footer-links">
-            <li><a href="index.html">الرئيسية</a></li>
-            <li><a href="works.html">الأعمال والفيديوهات</a></li>
-            <li><a href="journey.html">الرحلة</a></li>
-            <li><a href="contact.html">التواصل والإعلانات</a></li>
+            <li><a href="index.html" data-i18n="navHome">Home</a></li>
+            <li><a href="works.html" data-i18n="navWorks">Works & Videos</a></li>
+            <li><a href="journey.html" data-i18n="navJourney">Journey</a></li>
+            <li><a href="contact.html" data-i18n="navContact">Contact & Bookings</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h3>المنصات الرسمية</h3>
+          <h3 data-i18n="footerPlatformsTitle">Official Platforms</h3>
           <ul class="footer-links">
             <li><a href="https://www.instagram.com/_sherif_khalid/?hl=ar" target="_blank" rel="noopener">Instagram (3M+)</a></li>
             <li><a href="https://www.tiktok.com" target="_blank" rel="noopener">TikTok (12M+)</a></li>
@@ -580,12 +643,88 @@
 
       <div class="footer-bottom">
         <span class="num">SHERIF KHALID OFFICIAL © 2026</span>
-        <span>ALL RIGHTS RESERVED</span>
+        <span data-i18n="rights">ALL RIGHTS RESERVED</span>
       </div>
     </div>
   </footer>
 
   <script>
+    const translations = {
+      en: {
+        dir: 'ltr',
+        lang: 'en',
+        btnText: 'AR',
+        menuLabel: 'Menu',
+        navHome: 'Home',
+        navWorks: 'Works & Videos',
+        navJourney: 'Journey',
+        navContact: 'Contact & Bookings',
+        bioHeading: 'Sherif Khalid | شريف خالد',
+        bioP1: 'Sherif Khalid is a 27-year-old Egyptian content creator and influencer born in Al-Amireya, Cairo. He is one of the ambitious young figures who has built a strong presence across social media platforms, especially TikTok.',
+        bioP2: 'He started his content creation journey in 2018, and through determination, passion, and ambition, he built a large audience of millions of followers and achieved notable success in the social media space.',
+        bioP3: 'His ambitions went beyond content creation into music and performance, taking on diverse experiences that helped diversify his career and expand his reach with audiences.',
+        bioP4: 'Sherif Khalid represents an ambitious young creator continuously striving to grow, turn passion and ideas into real achievements, and pursue even greater success and excellence.',
+        statTikTok: 'Followers on TikTok',
+        statInsta: 'Followers on Instagram',
+        statYT: 'Subscribers on YouTube',
+        trackTitle: 'Baba Yad',
+        galleryTitle: 'Photos',
+        closeBtn: 'Close',
+        footerDesc: 'Official Hub for Sherif Khalid — over 16 million followers across TikTok, Instagram, and YouTube.',
+        footerPagesTitle: 'Pages',
+        footerPlatformsTitle: 'Official Platforms',
+        rights: 'ALL RIGHTS RESERVED'
+      },
+      ar: {
+        dir: 'rtl',
+        lang: 'ar',
+        btnText: 'EN',
+        menuLabel: 'القائمة',
+        navHome: 'الرئيسية',
+        navWorks: 'الأعمال والفيديوهات',
+        navJourney: 'الرحلة',
+        navContact: 'التواصل والإعلانات',
+        bioHeading: 'شريف خالد | Sherif Khalid',
+        bioP1: 'شريف خالد هو صانع محتوى ومؤثر مصري يبلغ من العمر 27 عامًا، وُلد في منطقة الأميرية بمحافظة القاهرة. يُعد من الشخصيات الشابة الطموحة التي استطاعت أن تصنع لنفسها حضورًا مميزًا على منصات التواصل الاجتماعي، وخاصة TikTok.',
+        bioP2: 'بدأ رحلته في صناعة المحتوى عام 2018، واستطاع من خلال إصراره وشغفه وطموحه أن يبني قاعدة جماهيرية كبيرة تضم ملايين المتابعين، وأن يحقق نجاحًا ملحوظًا في عالم السوشيال ميديا.',
+        bioP3: 'ولم تتوقف طموحاته عند صناعة المحتوى، بل امتدت إلى المجال الفني والغنائي، حيث خاض تجارب متعددة ساهمت في تنويع مسيرته وتوسيع حضوره الجماهيري.',
+        bioP4: 'يمثل شريف خالد نموذجًا للشاب الطموح الذي يسعى باستمرار إلى تطوير نفسه، وتحويل شغفه وأفكاره إلى إنجازات حقيقية، مع الاستمرار في السعي نحو المزيد من النجاح والتميز.',
+        statTikTok: 'متابع على TikTok',
+        statInsta: 'متابع على Instagram',
+        statYT: 'متابع على YouTube',
+        trackTitle: 'بابا ياض',
+        galleryTitle: 'الصور',
+        closeBtn: 'إغلاق',
+        footerDesc: 'الموقع الرسمي لشريف خالد — جمهور يتخطى 16 مليون متابع عبر TikTok وInstagram وYouTube.',
+        footerPagesTitle: 'الصفحات',
+        footerPlatformsTitle: 'المنصات الرسمية',
+        rights: 'جميع الحقوق محفوظة'
+      }
+    };
+
+    let currentLang = 'en';
+
+    function applyLanguage(lang) {
+      const dict = translations[lang] || translations.en;
+      currentLang = dict.lang;
+      document.documentElement.lang = dict.lang;
+      document.documentElement.dir = dict.dir;
+
+      const langBtn = document.getElementById('langBtn');
+      if (langBtn) langBtn.textContent = dict.btnText;
+
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key] !== undefined) {
+          el.textContent = dict[key];
+        }
+      });
+    }
+
+    function toggleLanguage() {
+      applyLanguage(currentLang === 'en' ? 'ar' : 'en');
+    }
+
     const siteIntro = document.getElementById('siteIntro');
     function dismissIntro() {
       if (siteIntro) siteIntro.classList.add('done');
