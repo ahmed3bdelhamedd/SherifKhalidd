@@ -244,7 +244,7 @@
       min-height: 420px;
       border-radius: 24px;
       overflow: hidden;
-      background: #050507;
+      background: #07080b;
       border: 1px solid var(--line);
       margin-bottom: 62px;
       box-shadow: 0 28px 68px rgba(0, 0, 0, 0.82);
@@ -257,7 +257,7 @@
       display: block;
     }
 
-    /* شبكة مودرن لفيديوهات التريند بخلفية سوداء بالكامل */
+    /* شبكة مودرن لفيديوهات التريند بدون فلاتر */
     .tiktok-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -266,21 +266,22 @@
     }
 
     .tt-card {
-      background: #07080c;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(180deg, rgba(16, 18, 25, 0.88) 0%, rgba(7, 8, 12, 0.96) 100%);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.09);
       border-radius: 24px;
       padding: 12px;
       display: flex;
       flex-direction: column;
       gap: 12px;
-      box-shadow: 0 24px 56px rgba(0, 0, 0, 0.85);
+      box-shadow: 0 24px 56px rgba(0, 0, 0, 0.82);
       transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
     }
 
     .tt-card:hover {
       transform: translateY(-5px);
       border-color: rgba(225, 29, 72, 0.5);
-      box-shadow: 0 28px 64px rgba(225, 29, 72, 0.16);
+      box-shadow: 0 28px 64px rgba(225, 29, 72, 0.14);
     }
 
     .tt-card-head {
@@ -320,7 +321,6 @@
       color: #fff;
     }
 
-    /* قلب الأبيض إلى أسود داخل إطار الفيديو بشكل أنيق */
     .tt-embed-frame {
       position: relative;
       width: 100%;
@@ -328,8 +328,8 @@
       max-height: 540px;
       border-radius: 18px;
       overflow: hidden;
-      background: #040507;
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: #06070a;
+      border: 1px solid rgba(255, 255, 255, 0.07);
     }
 
     .tt-embed-frame iframe {
@@ -339,22 +339,9 @@
       height: 100%;
       border: none;
       display: block;
-      background: #040507;
-      transform: scale(1.06);
+      background: #06070a;
+      transform: scale(1.05);
       transform-origin: center center;
-      filter: invert(0.92) hue-rotate(180deg) contrast(1.08);
-    }
-
-    /* طبقة مزج سوداء تحافظ على وضوح الفيديو وتلغي أي بياض متبقي */
-    .tt-embed-frame::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      border-radius: 18px;
-      box-shadow: inset 0 0 28px rgba(4, 5, 7, 0.75);
-      background: rgba(4, 5, 7, 0.14);
-      mix-blend-mode: darken;
     }
 
     /* توسيط الكارت العاشر الأخير في الشبكة الثلاثية */
