@@ -68,7 +68,7 @@
     }
 
     .num { font-family: 'Plus Jakarta Sans', sans-serif; }
-    .container { max-width: 1220px; margin: 0 auto; padding: 0 24px; width: 100%; }
+    .container { max-width: 1260px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
     .clip-brand-font {
       font-family: 'Anton', 'Archivo Black', sans-serif;
@@ -235,101 +235,71 @@
       display: block;
     }
 
-    /* أماكن عرض فيديوهات تيك توك */
+    /* شبكة عرض فيديوهات تيك توك المباشرة */
     .tiktok-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
     }
 
-    .tt-slot {
-      background: rgba(10, 11, 15, 0.72);
-      backdrop-filter: blur(12px);
+    .tt-card {
+      background: rgba(10, 11, 15, 0.78);
+      backdrop-filter: blur(14px);
       border: 1px solid var(--line);
       border-radius: 20px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition: transform 0.28s ease, border-color 0.28s ease;
+      box-shadow: 0 22px 52px rgba(0, 0, 0, 0.72);
+      transition: transform 0.25s ease, border-color 0.25s ease;
     }
 
-    .tt-slot:hover {
+    .tt-card:hover {
       transform: translateY(-4px);
-      border-color: rgba(225, 29, 72, 0.5);
+      border-color: rgba(225, 29, 72, 0.48);
     }
 
-    .tt-screen {
-      position: relative;
-      aspect-ratio: 9 / 16;
-      background: #08090c;
-      overflow: hidden;
+    .tt-card-head {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--line);
     }
 
-    .tt-screen img {
+    .tt-num {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+    }
+
+    .tt-ext {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      transition: color 0.2s ease;
+    }
+
+    .tt-ext:hover {
+      color: #fff;
+    }
+
+    .tt-embed-frame {
+      width: 100%;
+      height: 590px;
+      background: #08090d;
+      overflow: hidden;
+    }
+
+    .tt-embed-frame iframe {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: center top;
+      border: none;
       display: block;
-      opacity: 0.72;
-    }
-
-    .tt-play-badge {
-      position: absolute;
-      bottom: 14px;
-      inset-inline-start: 14px;
-      background: rgba(5, 5, 7, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      color: #fff;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      padding: 5px 10px;
-      border-radius: 8px;
-    }
-
-    .tt-meta {
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      flex: 1;
-    }
-
-    .tt-meta h3 {
-      font-size: 1rem;
-      font-weight: 800;
-      color: #fff;
-    }
-
-    .tt-meta p {
-      font-size: 0.84rem;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .tt-watch-link {
-      margin-top: auto;
-      padding-top: 8px;
-      text-decoration: none;
-      color: #fff;
-      background: rgba(225, 29, 72, 0.16);
-      border: 1px solid rgba(225, 29, 72, 0.45);
-      border-radius: 10px;
-      padding: 9px 12px;
-      text-align: center;
-      font-size: 0.84rem;
-      font-weight: 800;
-      transition: background 0.2s ease, border-color 0.2s ease;
-    }
-
-    .tt-watch-link:hover {
-      background: var(--accent);
-      border-color: var(--accent);
     }
 
     /* Footer */
@@ -392,8 +362,8 @@
       font-size: 0.84rem;
     }
 
-    @media (max-width: 1080px) {
-      .tiktok-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    @media (max-width: 1060px) {
+      .tiktok-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
     }
 
     @media (max-width: 960px) {
@@ -420,11 +390,12 @@
       .menu-btn { display: inline-block; }
     }
 
-    @media (max-width: 600px) {
-      .container { padding: 0 18px; }
+    @media (max-width: 640px) {
+      .container { padding: 0 16px; }
       .works-main { padding: 36px 0 64px; }
       .track-player { min-height: 220px; border-radius: 16px; }
-      .tiktok-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .tiktok-grid { grid-template-columns: 1fr; gap: 18px; }
+      .tt-embed-frame { height: 560px; }
     }
   </style>
 </head>
@@ -462,7 +433,7 @@
     <div class="container">
       <h1 class="clip-brand-font page-heading" data-i18n="pageHeading">WORKS & VIDEOS</h1>
       <p class="page-sub" data-i18n="pageSub">
-        Featured releases and dedicated TikTok video slots for Sherif Khalid. Replace each placeholder link with the exact TikTok video URL anytime.
+        Official releases and viral TikTok videos by Sherif Khalid — watch directly below.
       </p>
 
       <h2 class="section-label" data-i18n="trackTitle">Baba Yad</h2>
@@ -475,59 +446,7 @@
       </div>
 
       <h2 class="section-label" data-i18n="tiktokSection">TikTok Videos</h2>
-      <div class="tiktok-grid">
-        <!-- مكان فيديو تيك توك 1 -->
-        <article class="tt-slot">
-          <div class="tt-screen">
-            <img src="assts/sherif_khalid2.jpg" alt="TikTok Slot 1">
-            <span class="tt-play-badge">TIKTOK #01</span>
-          </div>
-          <div class="tt-meta">
-            <h3 data-i18n="slot1Title">TikTok Clip 01</h3>
-            <p data-i18n="slot1Desc">Add Sherif's TikTok video link here.</p>
-            <a class="tt-watch-link" href="https://www.tiktok.com" target="_blank" rel="noopener" data-i18n="openTikTok">Open on TikTok</a>
-          </div>
-        </article>
-
-        <!-- مكان فيديو تيك توك 2 -->
-        <article class="tt-slot">
-          <div class="tt-screen">
-            <img src="assts/sherif_khalid4.jpg" alt="TikTok Slot 2">
-            <span class="tt-play-badge">TIKTOK #02</span>
-          </div>
-          <div class="tt-meta">
-            <h3 data-i18n="slot2Title">TikTok Clip 02</h3>
-            <p data-i18n="slot2Desc">Add Sherif's TikTok video link here.</p>
-            <a class="tt-watch-link" href="https://www.tiktok.com" target="_blank" rel="noopener" data-i18n="openTikTok">Open on TikTok</a>
-          </div>
-        </article>
-
-        <!-- مكان فيديو تيك توك 3 -->
-        <article class="tt-slot">
-          <div class="tt-screen">
-            <img src="assts/zherif_khalid5.jpg" alt="TikTok Slot 3">
-            <span class="tt-play-badge">TIKTOK #03</span>
-          </div>
-          <div class="tt-meta">
-            <h3 data-i18n="slot3Title">TikTok Clip 03</h3>
-            <p data-i18n="slot3Desc">Add Sherif's TikTok video link here.</p>
-            <a class="tt-watch-link" href="https://www.tiktok.com" target="_blank" rel="noopener" data-i18n="openTikTok">Open on TikTok</a>
-          </div>
-        </article>
-
-        <!-- مكان فيديو تيك توك 4 -->
-        <article class="tt-slot">
-          <div class="tt-screen">
-            <img src="assts/shreif+khalid6.jpg" alt="TikTok Slot 4">
-            <span class="tt-play-badge">TIKTOK #04</span>
-          </div>
-          <div class="tt-meta">
-            <h3 data-i18n="slot4Title">TikTok Clip 04</h3>
-            <p data-i18n="slot4Desc">Add Sherif's TikTok video link here.</p>
-            <a class="tt-watch-link" href="https://www.tiktok.com" target="_blank" rel="noopener" data-i18n="openTikTok">Open on TikTok</a>
-          </div>
-        </article>
-      </div>
+      <div class="tiktok-grid" id="tiktokGrid"></div>
     </div>
   </main>
 
@@ -557,7 +476,7 @@
           <h3 data-i18n="footerPlatformsTitle">Official Platforms</h3>
           <ul class="footer-links">
             <li><a href="https://www.instagram.com/_sherif_khalid/?hl=ar" target="_blank" rel="noopener">Instagram (3M+)</a></li>
-            <li><a href="https://www.tiktok.com" target="_blank" rel="noopener">TikTok (12M+)</a></li>
+            <li><a href="https://www.tiktok.com/@sherifkhalidd" target="_blank" rel="noopener">TikTok (12M+)</a></li>
             <li><a href="https://www.youtube.com/@sherifkhalid8422" target="_blank" rel="noopener">YouTube (1M+)</a></li>
           </ul>
         </div>
@@ -571,6 +490,19 @@
   </footer>
 
   <script>
+    const tiktokVideos = [
+      { id: '6952165736198491398', url: 'https://www.tiktok.com/@sherifkhalidd/video/6952165736198491398?lang=ar' },
+      { id: '6964746356825148677', url: 'https://www.tiktok.com/@sherifkhalidd/video/6964746356825148677?lang=ar' },
+      { id: '7121763143730105606', url: 'https://www.tiktok.com/@sherifkhalidd/video/7121763143730105606?lang=ar' },
+      { id: '6969629582408355077', url: 'https://www.tiktok.com/@sherifkhalidd/video/6969629582408355077?lang=ar' },
+      { id: '6927202523761757445', url: 'https://www.tiktok.com/@sherifkhalidd/video/6927202523761757445?lang=ar' },
+      { id: '6966777325245467909', url: 'https://www.tiktok.com/@sherifkhalidd/video/6966777325245467909?lang=ar' },
+      { id: '6845306822379851013', url: 'https://www.tiktok.com/@sherifkhalidd/video/6845306822379851013?lang=ar' },
+      { id: '6982996040098008325', url: 'https://www.tiktok.com/@sherifkhalidd/video/6982996040098008325?lang=ar' },
+      { id: '6945750763163487494', url: 'https://www.tiktok.com/@sherifkhalidd/video/6945750763163487494?lang=ar' },
+      { id: '6936147969305578758', url: 'https://www.tiktok.com/@sherifkhalidd/video/6936147969305578758?lang=ar' }
+    ];
+
     const translations = {
       en: {
         dir: 'ltr',
@@ -582,18 +514,10 @@
         navJourney: 'Journey',
         navContact: 'Contact & Bookings',
         pageHeading: 'WORKS & VIDEOS',
-        pageSub: 'Featured releases and dedicated TikTok video slots for Sherif Khalid. Replace each placeholder link with the exact TikTok video URL anytime.',
+        pageSub: 'Official releases and viral TikTok videos by Sherif Khalid — watch directly below.',
         trackTitle: 'Baba Yad',
         tiktokSection: 'TikTok Videos',
-        slot1Title: 'TikTok Clip 01',
-        slot1Desc: "Add Sherif's TikTok video link here.",
-        slot2Title: 'TikTok Clip 02',
-        slot2Desc: "Add Sherif's TikTok video link here.",
-        slot3Title: 'TikTok Clip 03',
-        slot3Desc: "Add Sherif's TikTok video link here.",
-        slot4Title: 'TikTok Clip 04',
-        slot4Desc: "Add Sherif's TikTok video link here.",
-        openTikTok: 'Open on TikTok',
+        openApp: 'Open in TikTok',
         footerDesc: 'Official Hub for Sherif Khalid — over 16 million followers across TikTok, Instagram, and YouTube.',
         footerPagesTitle: 'Pages',
         footerPlatformsTitle: 'Official Platforms',
@@ -609,18 +533,10 @@
         navJourney: 'الرحلة',
         navContact: 'التواصل والإعلانات',
         pageHeading: 'الأعمال والفيديوهات',
-        pageSub: 'أعمال غنائية وأماكن مخصصة لفيديوهات شريف خالد على تيك توك، تقدر تغير رابط كل فيديو بسهولة في أي وقت.',
+        pageSub: 'أعمال شريف خالد الغنائية وأشهر فيديوهاته على تيك توك — شاهد مباشرة.',
         trackTitle: 'بابا ياض',
         tiktokSection: 'فيديوهات تيك توك',
-        slot1Title: 'فيديو تيك توك 01',
-        slot1Desc: 'أضف رابط فيديو شريف على تيك توك هنا.',
-        slot2Title: 'فيديو تيك توك 02',
-        slot2Desc: 'أضف رابط فيديو شريف على تيك توك هنا.',
-        slot3Title: 'فيديو تيك توك 03',
-        slot3Desc: 'أضف رابط فيديو شريف على تيك توك هنا.',
-        slot4Title: 'فيديو تيك توك 04',
-        slot4Desc: 'أضف رابط فيديو شريف على تيك توك هنا.',
-        openTikTok: 'فتح على TikTok',
+        openApp: 'فتح في TikTok',
         footerDesc: 'الموقع الرسمي لشريف خالد — جمهور يتخطى 16 مليون متابع عبر TikTok وInstagram وYouTube.',
         footerPagesTitle: 'الصفحات',
         footerPlatformsTitle: 'المنصات الرسمية',
@@ -629,6 +545,32 @@
     };
 
     let currentLang = 'en';
+
+    function renderTikTokVideos() {
+      const grid = document.getElementById('tiktokGrid');
+      const openLabel = translations[currentLang].openApp;
+      if (!grid) return;
+
+      grid.innerHTML = tiktokVideos.map((v, index) => {
+        const num = String(index + 1).padStart(2, '0');
+        return `
+          <article class="tt-card">
+            <div class="tt-card-head">
+              <span class="tt-num">TIKTOK #${num}</span>
+              <a class="tt-ext" href="${v.url}" target="_blank" rel="noopener">${openLabel}</a>
+            </div>
+            <div class="tt-embed-frame">
+              <iframe
+                src="https://www.tiktok.com/embed/v2/${v.id}"
+                allow="autoplay; encrypted-media; fullscreen"
+                loading="${index < 3 ? 'eager' : 'lazy'}"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
 
     function applyLanguage(lang) {
       const dict = translations[lang] || translations.en;
@@ -645,11 +587,17 @@
           el.textContent = dict[key];
         }
       });
+
+      document.querySelectorAll('.tt-ext').forEach((el) => {
+        el.textContent = dict.openApp;
+      });
     }
 
     function toggleLanguage() {
       applyLanguage(currentLang === 'en' ? 'ar' : 'en');
     }
+
+    renderTikTokVideos();
 
     const navMenu = document.getElementById('navMenu');
     const menuBtn = document.getElementById('menuBtn');
