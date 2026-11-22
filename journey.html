@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الرحلة | شريف خالد - منذ ٢٠١٨</title>
+  <link rel="icon" href="assets/favicon.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    :root { --bg: #050507; --surface: rgba(255,255,255,0.03); --border: rgba(255,255,255,0.08); --text: #fff; --muted: #9ca3af; --accent: #e11d48; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: 'Cairo', sans-serif; min-height: 100vh; display: flex; flex-direction: column; }
+    .en { font-family: 'Syne', sans-serif; letter-spacing: 0.05em; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; width: 100%; }
+
+    header { position: sticky; top: 0; z-index: 100; background: rgba(5,5,7,0.88); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 16px 0; }
+    .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
+    .brand { text-decoration: none; color: #fff; font-weight: 800; font-size: 1.2rem; display: flex; align-items: center; gap: 8px; }
+    .brand span.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+    nav { display: flex; gap: 28px; }
+    nav a { text-decoration: none; color: var(--muted); font-weight: 700; font-size: 0.95rem; transition: 0.3s; }
+    nav a:hover, nav a.active { color: var(--accent); }
+    .menu-btn { display: none; background: none; border: none; color: #fff; font-size: 1.4rem; cursor: pointer; }
+
+    main { flex: 1; padding: 60px 0; }
+    .bio-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 40px; align-items: center; margin-bottom: 64px; }
+    .bio-img img { width: 100%; height: 420px; object-fit: cover; border-radius: 22px; border: 1px solid var(--border); }
+    .bio-text span { color: var(--accent); font-weight: 700; font-size: 0.85rem; }
+    .bio-text h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; margin: 8px 0 16px; }
+    .bio-text p { color: var(--muted); line-height: 1.8; font-size: 1.05rem; margin-bottom: 16px; }
+
+    .timeline { display: flex; flex-direction: column; gap: 20px; }
+    .step {
+      display: grid; grid-template-columns: 110px 1fr; gap: 24px; align-items: center;
+      background: var(--surface); border: 1px solid var(--border); padding: 26px; border-radius: 20px;
+    }
+    .year { font-size: 1.9rem; font-weight: 800; color: var(--accent); }
+    .step h3 { font-size: 1.2rem; margin-bottom: 6px; }
+    .step p { color: var(--muted); font-size: 0.95rem; }
+
+    footer { border-top: 1px solid var(--border); padding: 24px 0; text-align: center; color: var(--muted); font-size: 0.88rem; }
+    @media (max-width: 880px) {
+      .bio-grid, .step { grid-template-columns: 1fr; }
+      nav { display: none; position: absolute; top: 65px; right: 0; width: 100%; background: #08080b; flex-direction: column; padding: 24px; border-bottom: 1px solid var(--border); }
+      nav.open { display: flex; }
+      .menu-btn { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand en">SHERIF KHALID <span class="dot"></span></a>
+      <nav id="navMenu">
+        <a href="index.html">الرئيسية</a>
+        <a href="works.html">الأعمال والفيديوهات</a>
+        <a href="journey.html" class="active">الرحلة (منذ ٢٠١٨)</a>
+        <a href="contact.html">التواصل والإعلانات</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="bio-grid">
+        <div class="bio-img">
+          <img src="assets/about.jpg" alt="رحلة شريف خالد" onerror="this.src='https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80'">
+        </div>
+        <div class="bio-text">
+          <span class="en">THE STORY // 2018 — PRESENT</span>
+          <h1>من شغف البدايات إلى صناعة الهوية</h1>
+          <p>
+            بدأ شريف خالد رحلته في صناعة المحتوى عام ٢٠١٨ في وقت كانت فيه الفيديوهات القصيرة لسه بتشق طريقها في مصر والوطن العربي. اعتمد على العفوية، خفة الظل، والأفكار القريبة من الشباب.
+          </p>
+          <p>
+            مع الوقت، تطورت التجربة من مجرد مقاطع قصيرة على تيك توك إلى حضور قوي على يوتيوب وإنستجرام وفيسبوك، بجانب تقديم أعمال غنائية وجولات جماهيرية.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="step">
+          <div class="year en">2018</div>
+          <div>
+            <h3>الانطلاقة الأولى على تيك توك</h3>
+            <p>بداية نشر الفيديوهات القصيرة وبناء أول قاعدة جماهيرية حقيقية من الصفر.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="year en">2021</div>
+          <div>
+            <h3>التوسع والانتشار العربي</h3>
+            <p>تحقيق ملايين المشاهدات والتعاون مع علامات تجارية وصناع محتوى بارزين.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="year en">2026</div>
+          <div>
+            <h3>مرحلة الموسيقى والفعاليات</h3>
+            <p>إطلاق أعمال غنائية خاصة وتنظيم جولات ولقاءات مباشرة مع الجمهور.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container en">SHERIF KHALID OFFICIAL © 2026</div>
+  </footer>
+
+  <script>
+    document.getElementById('menuBtn').onclick = () => document.getElementById('navMenu').classList.toggle('open');
+  </script>
+</body>
+</html>
