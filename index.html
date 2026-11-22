@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SHERIF KHALID | شريف خالد — 12M TikTok • 3M IG</title>
-  <link rel="icon" href="assets/favicon.png" type="image/png" />
+  <link rel="icon" href="assts/sherif_khalid2.jpg" type="image/jpeg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
@@ -33,23 +33,6 @@
     .en { font-family: 'Syne', sans-serif; letter-spacing: 0.05em; }
     .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
-    /* Preloader */
-    #preloader {
-      position: fixed; inset: 0; background: #030304; z-index: 9999;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      transition: opacity 0.55s ease, visibility 0.55s ease;
-    }
-    #preloader.hide { opacity: 0; visibility: hidden; }
-    .loader-logo {
-      font-family: 'Syne', sans-serif; font-size: 3.6rem; font-weight: 800;
-      background: linear-gradient(135deg, #fff 30%, var(--accent));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      margin-bottom: 14px;
-    }
-    .loader-track { width: 220px; height: 3px; background: rgba(255,255,255,0.1); border-radius: 99px; overflow: hidden; }
-    .loader-fill { width: 0%; height: 100%; background: var(--accent); box-shadow: 0 0 12px var(--accent); transition: width 0.2s; }
-
-    /* Header */
     header {
       position: sticky; top: 0; z-index: 200;
       background: rgba(4, 4, 6, 0.88); backdrop-filter: blur(18px);
@@ -64,7 +47,6 @@
     nav a.active { color: var(--accent); }
     .menu-btn { display: none; background: none; border: none; color: #fff; font-size: 1.4rem; cursor: pointer; }
 
-    /* Hero */
     .hero { position: relative; padding: 64px 0 40px; }
     .glow-red {
       position: absolute; top: -40px; right: 10%; width: 520px; height: 520px;
@@ -98,7 +80,6 @@
 
     .lead { color: var(--muted); font-size: 1.08rem; line-height: 1.75; max-width: 560px; margin-bottom: 28px; }
 
-    /* Big Numbers Strip */
     .impact-strip {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
       max-width: 580px; margin-bottom: 30px;
@@ -124,7 +105,6 @@
     .btn-outline { background: var(--surface); color: #fff; border: 1px solid var(--border); }
     .btn-outline:hover { border-color: rgba(255,255,255,0.3); }
 
-    /* Social Links */
     .socials-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 580px; }
     .social-box {
       background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
@@ -136,22 +116,30 @@
     .social-box span { font-size: 0.72rem; color: var(--muted); font-weight: 700; }
     .social-box:hover { border-color: var(--accent); transform: translateY(-3px); background: rgba(225,29,72,0.08); }
 
-    /* Portrait Frame */
     .portrait-wrap {
       position: relative; border-radius: 28px; padding: 12px;
       background: linear-gradient(145deg, rgba(255,255,255,0.14), rgba(255,255,255,0.01));
       border: 1px solid var(--border);
     }
-    .portrait-wrap img { width: 100%; height: 520px; object-fit: cover; border-radius: 20px; display: block; }
-    .float-badge {
-      position: absolute; bottom: 26px; right: -14px; background: rgba(4,4,6,0.92);
-      backdrop-filter: blur(14px); border: 1px solid var(--border);
-      padding: 14px 20px; border-radius: 16px;
+    .portrait-wrap img.main-photo { width: 100%; height: 470px; object-fit: cover; border-radius: 20px; display: block; }
+    .thumbs-row {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 10px;
     }
-    .float-badge strong { display: block; font-size: 1.15rem; color: #fff; }
-    .float-badge small { color: var(--gold); font-weight: 700; font-size: 0.78rem; }
+    .thumbs-row img {
+      width: 100%; height: 64px; object-fit: cover; border-radius: 10px;
+      border: 1px solid var(--border); cursor: pointer; opacity: 0.75; transition: 0.25s;
+    }
+    .thumbs-row img:hover, .thumbs-row img.active-thumb {
+      opacity: 1; border-color: var(--accent); transform: translateY(-2px);
+    }
+    .float-badge {
+      position: absolute; bottom: 88px; right: -14px; background: rgba(4,4,6,0.92);
+      backdrop-filter: blur(14px); border: 1px solid var(--border);
+      padding: 12px 18px; border-radius: 16px;
+    }
+    .float-badge strong { display: block; font-size: 1.1rem; color: #fff; }
+    .float-badge small { color: var(--gold); font-weight: 700; font-size: 0.76rem; }
 
-    /* Pinned Video Stage */
     .stage-section { padding: 48px 0 84px; }
     .stage-head {
       display: flex; justify-content: space-between; align-items: flex-end;
@@ -167,8 +155,8 @@
       border: 1px solid var(--border);
       box-shadow: 0 30px 70px -15px rgba(0,0,0,0.9), 0 0 40px -15px var(--glow);
     }
-    .stage-box video {
-      width: 100%; height: 100%; object-fit: cover; display: block; background: #000;
+    .stage-box iframe {
+      width: 100%; height: 100%; border: none; display: block;
     }
 
     footer { margin-top: auto; border-top: 1px solid var(--border); padding: 26px 0; text-align: center; color: var(--muted); font-size: 0.88rem; }
@@ -188,11 +176,6 @@
   </style>
 </head>
 <body>
-
-  <div id="preloader">
-    <div class="loader-logo">SK</div>
-    <div class="loader-track"><div class="loader-fill" id="loaderFill"></div></div>
-  </div>
 
   <header>
     <div class="container nav-wrap">
@@ -271,7 +254,14 @@
       </div>
 
       <div class="portrait-wrap">
-        <img src="assets/hero.jpg" alt="شريف خالد" onerror="this.src='https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=900&q=80'">
+        <img id="mainHeroImg" class="main-photo" src="assts/sherif_khalid2.jpg" alt="شريف خالد">
+        <div class="thumbs-row">
+          <img src="assts/sherif_khalid2.jpg" class="active-thumb" onclick="switchHero(this)" alt="صورة 1">
+          <img src="assts/sherif_khahid.jpg" onclick="switchHero(this)" alt="صورة 2">
+          <img src="assts/sherif_khalid3.jpg" onclick="switchHero(this)" alt="صورة 3">
+          <img src="assts/sherif_khalid4.jpg" onclick="switchHero(this)" alt="صورة 4">
+          <img src="assts/sherif_khalid5.jpg" onclick="switchHero(this)" alt="صورة 5">
+        </div>
         <div class="float-badge">
           <strong class="en">15M+ COMMUNITY</strong>
           <small>SHERIF KHALID • EGYPT</small>
@@ -291,9 +281,11 @@
       </div>
 
       <div class="stage-box">
-        <video controls playsinline preload="metadata" poster="https://img.youtube.com/vi/L9VN7d_3Z7U/maxresdefault.jpg">
-          <source src="https://drive.google.com/uc?export=download&id=1-lU7XJ8MST3x_Mo7UfRbabdMzoVzhFSf" type="video/mp4">
-        </video>
+        <iframe
+          src="https://drive.google.com/file/d/1-lU7XJ8MST3x_Mo7UfRbabdMzoVzhFSf/preview"
+          allow="autoplay; fullscreen"
+          allowfullscreen>
+        </iframe>
       </div>
     </div>
   </section>
@@ -303,25 +295,16 @@
   </footer>
 
   <script>
-    // Preloader
-    const fill = document.getElementById('loaderFill');
-    const preloader = document.getElementById('preloader');
-    let w = 0;
-    const loaderTimer = setInterval(() => {
-      w += 35;
-      fill.style.width = Math.min(w, 100) + '%';
-      if (w >= 100) {
-        clearInterval(loaderTimer);
-        setTimeout(() => preloader.classList.add('hide'), 220);
-      }
-    }, 110);
-
-    // Mobile Menu
     document.getElementById('menuBtn').onclick = () => {
       document.getElementById('navMenu').classList.toggle('open');
     };
 
-    // Animated Counters for 12M & 3M
+    function switchHero(thumbEl) {
+      document.getElementById('mainHeroImg').src = thumbEl.src;
+      document.querySelectorAll('.thumbs-row img').forEach(img => img.classList.remove('active-thumb'));
+      thumbEl.classList.add('active-thumb');
+    }
+
     document.querySelectorAll('.counter').forEach(el => {
       const target = +el.dataset.target;
       const suffix = el.dataset.suffix || '';
