@@ -8,7 +8,7 @@
   <link rel="apple-touch-icon" href="assts/sherif_khalid7.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Cairo:wght@400;600;700;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <style>
     :root {
@@ -25,9 +25,7 @@
 
     * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
-    html {
-      overflow-x: clip;
-    }
+    html { overflow-x: clip; }
 
     body {
       background: var(--bg);
@@ -45,7 +43,6 @@
     .en { font-family: 'Syne', sans-serif; letter-spacing: 0.05em; }
     .container { max-width: 1260px; margin: 0 auto; padding: 0 20px; width: 100%; }
 
-    /* Header */
     header {
       position: sticky; top: 0; z-index: 300;
       background: rgba(5, 5, 7, 0.88);
@@ -86,7 +83,6 @@
       font-size: 1.15rem; cursor: pointer; align-items: center; justify-content: center;
     }
 
-    /* Hero */
     .hero { position: relative; padding: 48px 0 28px; }
     .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 44px; align-items: center; }
 
@@ -100,19 +96,45 @@
     }
     .vip-badge i { color: var(--gold); }
 
-    h1 { font-size: clamp(2.5rem, 6.2vw, 5.4rem); font-weight: 900; line-height: 1.05; margin-bottom: 16px; }
+    h1 { margin-bottom: 16px; }
     h1 .kicker {
       display: block; font-size: clamp(0.75rem, 1.5vw, 0.88rem); color: var(--accent);
-      letter-spacing: 0.16em; margin-bottom: 8px;
+      letter-spacing: 0.16em; margin-bottom: 8px; font-weight: 800;
     }
-    h1 .name-grad {
-      background: linear-gradient(180deg, #ffffff 35%, #8d909b 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+
+    .clip-display-font {
+      font-family: 'Anton', 'Archivo Black', sans-serif;
+      font-style: italic;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      line-height: 0.98;
+      display: inline-block;
+      transform: skewX(-7deg) scaleY(1.06);
+      transform-origin: right center;
+    }
+
+    h1 .hero-clip-title {
+      display: block;
+      font-size: clamp(2.8rem, 6.8vw, 5.5rem);
+      background: linear-gradient(180deg, #ffffff 42%, #b8bcc8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.65));
+      margin-bottom: 6px;
+    }
+
+    h1 .ar-sub-name {
+      display: block;
+      font-family: 'Cairo', sans-serif;
+      font-size: clamp(1.35rem, 2.5vw, 2rem);
+      font-weight: 900;
+      color: var(--muted);
+      margin-top: 6px;
     }
 
     .lead { color: var(--muted); font-size: clamp(0.98rem, 1.4vw, 1.08rem); line-height: 1.8; max-width: 560px; margin-bottom: 24px; }
 
-    /* Big Numbers */
     .impact-strip {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
       max-width: 590px; margin-bottom: 26px;
@@ -135,7 +157,6 @@
     .impact-num { font-size: clamp(1.45rem, 2.5vw, 1.9rem); font-weight: 800; color: #fff; line-height: 1.1; }
     .impact-label { font-size: 0.8rem; color: var(--muted); font-weight: 700; margin-top: 5px; }
 
-    /* Buttons */
     .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
     .btn {
       padding: 13px 24px; border-radius: 14px; font-weight: 800; text-decoration: none;
@@ -154,7 +175,6 @@
     }
     .btn-outline:hover { background: var(--surface-hover); border-color: rgba(255,255,255,0.28); transform: translateY(-2px); }
 
-    /* Social Grid (3 Platforms) */
     .socials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 590px; }
     .social-box {
       background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
@@ -172,7 +192,6 @@
     }
     .social-box:hover i { transform: scale(1.12); }
 
-    /* Large Featured Portrait Frame */
     .spotlight-frame {
       position: relative;
       border-radius: 28px;
@@ -225,15 +244,14 @@
       pointer-events: none;
     }
 
-    .spotlight-caption strong {
+    .spotlight-caption .spot-title {
       display: block;
-      font-size: clamp(1.05rem, 2vw, 1.3rem);
-      font-weight: 900;
+      font-size: clamp(1.35rem, 2.5vw, 1.9rem);
       color: #fff;
     }
 
     .spotlight-caption span {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: #e5e7eb;
       font-weight: 700;
     }
@@ -250,7 +268,6 @@
       white-space: nowrap;
     }
 
-    /* Ticker Strip */
     .ticker {
       margin-top: 32px;
       border-top: 1px solid var(--border);
@@ -272,7 +289,6 @@
       100% { transform: translateX(50%); }
     }
 
-    /* Pinned Video Stage */
     .stage-section { padding: 48px 0 80px; }
     .stage-head {
       display: flex; justify-content: space-between; align-items: flex-end;
@@ -288,15 +304,29 @@
       box-shadow: 0 32px 75px -15px rgba(0,0,0,0.92), 0 0 48px -18px var(--glow);
     }
 
-    .popout-shield {
+    /* تغطية وحجب الزاوية العلوية اليسرى بالكامل */
+    .top-bar-shield {
       position: absolute;
-      top: 10px;
-      left: 10px;
-      width: 64px;
-      height: 64px;
-      border-radius: 14px;
-      background: rgba(7, 7, 10, 0.96);
-      z-index: 25;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 76px;
+      background: linear-gradient(180deg, #07070a 68%, transparent);
+      z-index: 40;
+      pointer-events: none;
+    }
+
+    .popout-blocker {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      width: 96px;
+      height: 72px;
+      border-radius: 16px;
+      background: #07070a;
+      z-index: 50;
+      pointer-events: auto;
+      cursor: default;
     }
 
     .stage-box iframe {
@@ -306,7 +336,6 @@
 
     footer { margin-top: auto; border-top: 1px solid var(--border); padding: 24px 0; text-align: center; color: var(--muted); font-size: 0.86rem; }
 
-    /* Tablet & Mobile Responsive */
     @media (max-width: 960px) {
       .hero-grid { grid-template-columns: 1fr; gap: 32px; }
       .spotlight-inner { aspect-ratio: 4 / 5; max-height: 520px; }
@@ -350,7 +379,7 @@
       .spotlight-frame { border-radius: 22px; padding: 8px; }
       .spotlight-inner { max-height: 450px; border-radius: 16px; }
       .spotlight-caption { bottom: 14px; right: 14px; left: 14px; }
-      .popout-shield { width: 48px; height: 48px; top: 6px; left: 6px; border-radius: 10px; }
+      .popout-blocker { width: 78px; height: 60px; top: 6px; left: 6px; border-radius: 12px; }
       .stage-section { padding: 36px 0 64px; }
     }
   </style>
@@ -380,7 +409,8 @@
 
         <h1>
           <span class="kicker">THE OFFICIAL HUB</span>
-          <span class="name-grad">شريف خالد</span>
+          <span class="clip-display-font hero-clip-title">SHERIF KHALID</span>
+          <span class="ar-sub-name">شريف خالد</span>
         </h1>
 
         <p class="lead">
@@ -432,8 +462,8 @@
           <div class="spotlight-gradient"></div>
           <div class="spotlight-caption">
             <div>
-              <strong>شريف خالد</strong>
-              <span>SHERIF KHALID</span>
+              <span class="clip-display-font spot-title">SHERIF KHALID</span>
+              <span>شريف خالد</span>
             </div>
             <span class="spotlight-tag en">15M+ FANS</span>
           </div>
@@ -465,7 +495,8 @@
       </div>
 
       <div class="stage-box">
-        <div class="popout-shield"></div>
+        <div class="top-bar-shield"></div>
+        <div class="popout-blocker"></div>
         <iframe
           src="https://drive.google.com/file/d/1-lU7XJ8MST3x_Mo7UfRbabdMzoVzhFSf/preview"
           allow="autoplay; fullscreen"
