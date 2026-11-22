@@ -42,7 +42,6 @@
     .en { font-family: 'Syne', sans-serif; letter-spacing: 0.05em; }
     .container { max-width: 1260px; margin: 0 auto; padding: 0 20px; width: 100%; }
 
-    /* الفونت الجريء المائل المستوحى من الكليب */
     .clip-brand-font {
       font-family: 'Anton', 'Archivo Black', sans-serif;
       font-style: italic;
@@ -54,7 +53,6 @@
       transform: skewX(-7deg) scaleY(1.06);
     }
 
-    /* Header */
     header {
       position: sticky; top: 0; z-index: 300;
       background: rgba(5, 5, 7, 0.88);
@@ -100,7 +98,6 @@
       font-size: 1.15rem; cursor: pointer; align-items: center; justify-content: center;
     }
 
-    /* Hero */
     .hero { position: relative; padding: 54px 0 32px; }
     .hero-grid { display: grid; grid-template-columns: 1.08fr 0.92fr; gap: 46px; align-items: center; }
 
@@ -132,7 +129,6 @@
 
     .lead { color: var(--muted); font-size: clamp(1rem, 1.4vw, 1.08rem); line-height: 1.85; max-width: 560px; margin-bottom: 26px; }
 
-    /* Big Numbers */
     .impact-strip {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
       max-width: 590px; margin-bottom: 26px;
@@ -155,7 +151,6 @@
     .impact-num { font-size: clamp(1.5rem, 2.5vw, 1.95rem); font-weight: 800; color: #fff; line-height: 1.1; }
     .impact-label { font-size: 0.8rem; color: var(--muted); font-weight: 700; margin-top: 5px; }
 
-    /* Social Grid */
     .socials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 590px; }
     .social-box {
       background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
@@ -173,7 +168,6 @@
     }
     .social-box:hover i { transform: scale(1.12); }
 
-    /* Spotlight Frame */
     .spotlight-frame {
       position: relative;
       border-radius: 30px;
@@ -206,7 +200,6 @@
       transform: scale(1.025);
     }
 
-    /* Ticker */
     .ticker {
       margin-top: 36px;
       border-top: 1px solid var(--border);
@@ -228,42 +221,14 @@
       100% { transform: translateX(50%); }
     }
 
-    /* Pinned Clip Stage */
-    .stage-section { padding: 56px 0 28px; }
+    .gallery-section { padding: 52px 0 84px; }
     .section-head {
       display: flex; justify-content: space-between; align-items: flex-end;
       flex-wrap: wrap; gap: 12px; margin-bottom: 22px;
     }
     .section-head span { color: var(--accent); font-weight: 800; font-size: 0.82rem; letter-spacing: 0.14em; display: block; }
-    .section-head h2 { font-size: clamp(1.6rem, 3.6vw, 2.6rem); font-weight: 900; }
+    .section-head h2 { font-size: clamp(1.6rem, 3.6vw, 2.5rem); font-weight: 900; }
 
-    .stage-box {
-      position: relative; width: 100%; aspect-ratio: 16 / 9;
-      border-radius: 24px; overflow: hidden; background: #07070a;
-      border: 1px solid rgba(255,255,255,0.14);
-      box-shadow: 0 34px 80px -15px rgba(0,0,0,0.92), 0 0 52px -18px var(--glow);
-    }
-
-    .popout-blocker {
-      position: absolute;
-      top: 8px;
-      left: 8px;
-      width: 96px;
-      height: 72px;
-      border-radius: 16px;
-      background: #07070a;
-      z-index: 50;
-      pointer-events: auto;
-      cursor: default;
-    }
-
-    .stage-box iframe {
-      position: relative; z-index: 10;
-      width: 100%; height: 100%; border: none; display: block;
-    }
-
-    /* Gallery */
-    .gallery-section { padding: 48px 0 84px; }
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -300,7 +265,6 @@
       transform: scale(1.045);
     }
 
-    /* Lightbox */
     .lightbox {
       position: fixed;
       inset: 0;
@@ -393,8 +357,6 @@
 
       .spotlight-frame { border-radius: 22px; padding: 8px; }
       .spotlight-inner { max-height: 450px; border-radius: 16px; }
-      .popout-blocker { width: 78px; height: 60px; top: 6px; left: 6px; border-radius: 12px; }
-      .stage-section { padding: 36px 0 24px; }
       .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
       .gallery-item { border-radius: 16px; }
       .gallery-section { padding: 36px 0 64px; }
@@ -484,26 +446,6 @@
         <span><i class="fa-solid fa-sparkles"></i> 12M+ TIKTOK</span>
         <span><i class="fa-solid fa-sparkles"></i> 3M+ INSTAGRAM</span>
         <span><i class="fa-brands fa-youtube"></i> 1M+ YOUTUBE</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="baba-yad-stage" class="stage-section">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <span class="en">FEATURED RELEASE</span>
-          <h2>بابا ياض — شريف خالد</h2>
-        </div>
-      </div>
-
-      <div class="stage-box">
-        <div class="popout-blocker"></div>
-        <iframe
-          src="https://drive.google.com/file/d/1-lU7XJ8MST3x_Mo7UfRbabdMzoVzhFSf/preview"
-          allow="autoplay; fullscreen"
-          allowfullscreen>
-        </iframe>
       </div>
     </div>
   </section>
