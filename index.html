@@ -226,13 +226,42 @@
       100% { transform: translateX(50%); }
     }
 
-    .gallery-section { padding: 56px 0 84px; }
+    /* Pinned Clip Stage */
+    .stage-section { padding: 54px 0 28px; }
     .section-head {
       display: flex; justify-content: space-between; align-items: flex-end;
-      flex-wrap: wrap; gap: 12px; margin-bottom: 24px;
+      flex-wrap: wrap; gap: 12px; margin-bottom: 22px;
     }
     .section-head span { color: var(--accent); font-weight: 800; font-size: 0.82rem; letter-spacing: 0.14em; display: block; }
-    .section-head h2 { font-size: clamp(1.6rem, 3.6vw, 2.5rem); font-weight: 900; }
+    .section-head h2 { font-size: clamp(1.6rem, 3.6vw, 2.6rem); font-weight: 900; }
+
+    .stage-box {
+      position: relative; width: 100%; aspect-ratio: 16 / 9;
+      border-radius: 22px; overflow: hidden; background: #07070a;
+      border: 1px solid rgba(255,255,255,0.13);
+      box-shadow: 0 32px 75px -15px rgba(0,0,0,0.92), 0 0 48px -18px var(--glow);
+    }
+
+    .popout-blocker {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      width: 96px;
+      height: 72px;
+      border-radius: 16px;
+      background: #07070a;
+      z-index: 50;
+      pointer-events: auto;
+      cursor: default;
+    }
+
+    .stage-box iframe {
+      position: relative; z-index: 10;
+      width: 100%; height: 100%; border: none; display: block;
+    }
+
+    /* Modern Clean Gallery */
+    .gallery-section { padding: 48px 0 84px; }
 
     .gallery-grid {
       display: grid;
@@ -362,6 +391,8 @@
 
       .spotlight-frame { border-radius: 22px; padding: 8px; }
       .spotlight-inner { max-height: 450px; border-radius: 16px; }
+      .popout-blocker { width: 78px; height: 60px; top: 6px; left: 6px; border-radius: 12px; }
+      .stage-section { padding: 36px 0 24px; }
       .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
       .gallery-item { border-radius: 16px; }
       .gallery-section { padding: 36px 0 64px; }
@@ -456,6 +487,26 @@
     </div>
   </section>
 
+  <section id="baba-yad-stage" class="stage-section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="en">FEATURED RELEASE</span>
+          <h2>بابا ياض — شريف خالد</h2>
+        </div>
+      </div>
+
+      <div class="stage-box">
+        <div class="popout-blocker"></div>
+        <iframe
+          src="https://drive.google.com/file/d/1-lU7XJ8MST3x_Mo7UfRbabdMzoVzhFSf/preview"
+          allow="autoplay; fullscreen"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+
   <section id="gallery" class="gallery-section">
     <div class="container">
       <div class="section-head">
@@ -466,16 +517,12 @@
       </div>
 
       <div class="gallery-grid">
-        <div class="gallery-item" onclick="openLightbox('assts/sherif_khalid7.jpg')">
-          <img src="assts/sherif_khalid7.jpg" alt="شريف خالد">
-        </div>
-
         <div class="gallery-item" onclick="openLightbox('assts/sherif_khalid2.jpg')">
           <img src="assts/sherif_khalid2.jpg" alt="شريف خالد">
         </div>
 
-        <div class="gallery-item" onclick="openLightbox('assts/sherif_khalid3.jpg')">
-          <img src="assts/sherif_khalid3.jpg" alt="شريف خالد">
+        <div class="gallery-item" onclick="openLightbox('assts/sherif_khahid.jpg')">
+          <img src="assts/sherif_khahid.jpg" alt="شريف خالد">
         </div>
 
         <div class="gallery-item" onclick="openLightbox('assts/sherif_khalid4.jpg')">
