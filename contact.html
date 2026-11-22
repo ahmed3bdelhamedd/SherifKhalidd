@@ -313,7 +313,7 @@
 
     .form-feedback {
       margin-top: 14px;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       font-weight: 700;
       color: #4ade80;
       min-height: 22px;
@@ -499,7 +499,7 @@
         <form class="form-card" id="bookingForm" onsubmit="handleBookingSubmit(event)">
           <h2 class="card-title" data-i18n="formTitle">Send a Booking or Campaign Request</h2>
           <p class="card-desc" data-i18n="formDesc">
-            Fill out the form and hit Send to send your inquiry automatically to @Sherif_khalidd_bot.
+            Fill out your inquiry and send it directly.
           </p>
 
           <div class="field-row">
@@ -536,18 +536,10 @@
         <aside class="channels-card">
           <h2 class="card-title" data-i18n="channelsTitle">Official Channels</h2>
           <p class="card-desc" data-i18n="channelsDesc">
-            Connect across Sherif Khalid's official platforms and Telegram bot.
+            Connect across Sherif Khalid's official platforms.
           </p>
 
           <div class="channel-list">
-            <a class="channel-item" href="https://web.telegram.org/k/#@Sherif_khalidd_bot" target="_blank" rel="noopener">
-              <div>
-                <strong>Telegram Bot</strong>
-                <span>@Sherif_khalidd_bot</span>
-              </div>
-              <span class="channel-badge">BOT</span>
-            </a>
-
             <a class="channel-item" href="https://www.tiktok.com/@sherifkhalidd" target="_blank" rel="noopener">
               <div>
                 <strong>TikTok</strong>
@@ -617,7 +609,6 @@
   </footer>
 
   <script>
-    const TELEGRAM_BOT_USERNAME = 'Sherif_khalidd_bot';
     const TELEGRAM_BOT_TOKEN = '9141966466:AAFNgW6TvqtmTfrUbE0Tut4eaVbb6FJiEKQ';
     const DEFAULT_CHAT_ID = '8936413578';
 
@@ -634,7 +625,7 @@
         pageHeading: 'CONTACT & BOOKINGS',
         pageSub: 'Reach out for brand campaigns, appearances, events, bookings, and official collaborations with Sherif Khalid.',
         formTitle: 'Send a Booking or Campaign Request',
-        formDesc: 'Fill out the form and hit Send to send your inquiry automatically to @Sherif_khalidd_bot.',
+        formDesc: 'Fill out your inquiry and send it directly.',
         labelName: 'Full Name / Brand',
         placeholderName: 'Your name or company',
         labelContact: 'Phone or Email',
@@ -647,9 +638,9 @@
         labelMessage: 'Details',
         placeholderMessage: 'Share dates, campaign details, or your message...',
         submitBtn: 'Send',
-        sentMsg: 'Sent automatically to @Sherif_khalidd_bot.',
+        sentMsg: 'Sent successfully. We will contact you soon.',
         channelsTitle: 'Official Channels',
-        channelsDesc: "Connect across Sherif Khalid's official platforms and Telegram bot.",
+        channelsDesc: "Connect across Sherif Khalid's official platforms.",
         ttSub: '@sherifkhalidd • Short videos & trends',
         igSub: '@_sherif_khalid • Reels, photos & updates',
         ytSub: 'Official channel & releases',
@@ -670,7 +661,7 @@
         pageHeading: 'التواصل والإعلانات',
         pageSub: 'تواصل معنا للحملات الإعلانية، الحجوزات، الظهور والفعاليات، والتعاونات الرسمية مع شريف خالد.',
         formTitle: 'إرسال طلب إعلان أو حجز',
-        formDesc: 'اكتب بياناتك واضغط إرسال ليتم إرسال الطلب أوتوماتيك إلى @Sherif_khalidd_bot.',
+        formDesc: 'اكتب بياناتك واضغط إرسال لتوصيل طلبك مباشرة.',
         labelName: 'الاسم الكامل / اسم البراند',
         placeholderName: 'اسمك أو اسم الشركة',
         labelContact: 'رقم الهاتف أو البريد الإلكتروني',
@@ -683,9 +674,9 @@
         labelMessage: 'التفاصيل',
         placeholderMessage: 'اكتب المواعيد أو تفاصيل الحملة أو رسالتك...',
         submitBtn: 'إرسال',
-        sentMsg: 'تم الإرسال أوتوماتيك إلى @Sherif_khalidd_bot.',
+        sentMsg: 'تم الارسال و سيتم التواصل معك قريبا',
         channelsTitle: 'المنصات الرسمية',
-        channelsDesc: 'تابع وتواصل عبر المنصات الرسمية وبوت تيليجرام.',
+        channelsDesc: 'تابع وتواصل عبر المنصات الرسمية.',
         ttSub: '@sherifkhalidd • فيديوهات وتريندات',
         igSub: '@_sherif_khalid • ريلز وصور وأخبار',
         ytSub: 'القناة الرسمية والأعمال',
@@ -730,9 +721,6 @@
           })
         });
       } catch (_) {}
-
-      const encoded = encodeURIComponent(summary);
-      window.open(`https://t.me/${TELEGRAM_BOT_USERNAME}?text=${encoded}`, '_blank', 'noopener');
 
       if (feedback) {
         feedback.style.color = '#4ade80';
