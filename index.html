@@ -13,18 +13,17 @@
   <style>
     :root {
       --bg: #050507;
-      --surface: rgba(255, 255, 255, 0.035);
-      --surface-hover: rgba(255, 255, 255, 0.065);
-      --border: rgba(255, 255, 255, 0.09);
+      --surface: rgba(255, 255, 255, 0.03);
+      --surface-hover: rgba(255, 255, 255, 0.06);
+      --border: rgba(255, 255, 255, 0.085);
       --text: #ffffff;
       --muted: #9ca3af;
       --accent: #e11d48;
       --gold: #eab308;
-      --glow: rgba(225, 29, 72, 0.4);
+      --glow: rgba(225, 29, 72, 0.38);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-
     html { overflow-x: clip; }
 
     body {
@@ -36,8 +35,8 @@
       display: flex;
       flex-direction: column;
       background-image:
-        radial-gradient(circle at 82% 12%, rgba(225, 29, 72, 0.16), transparent 38%),
-        radial-gradient(circle at 15% 42%, rgba(234, 179, 8, 0.07), transparent 34%);
+        radial-gradient(circle at 82% 12%, rgba(225, 29, 72, 0.15), transparent 38%),
+        radial-gradient(circle at 15% 42%, rgba(234, 179, 8, 0.06), transparent 34%);
     }
 
     .en { font-family: 'Syne', sans-serif; letter-spacing: 0.05em; }
@@ -178,8 +177,8 @@
       position: relative;
       border-radius: 28px;
       padding: 10px;
-      background: linear-gradient(145deg, rgba(225, 29, 72, 0.28), rgba(255, 255, 255, 0.08), rgba(234, 179, 8, 0.14));
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: linear-gradient(145deg, rgba(225, 29, 72, 0.25), rgba(255, 255, 255, 0.07), rgba(234, 179, 8, 0.12));
+      border: 1px solid rgba(255, 255, 255, 0.13);
       box-shadow: 0 34px 75px -20px rgba(0, 0, 0, 0.92), 0 0 55px -22px var(--glow);
     }
 
@@ -206,50 +205,6 @@
       transform: scale(1.025);
     }
 
-    .spotlight-gradient {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 55%, rgba(4, 4, 6, 0.9) 100%);
-      pointer-events: none;
-    }
-
-    .spotlight-caption {
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-      left: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 10px;
-      z-index: 5;
-      pointer-events: none;
-    }
-
-    .spotlight-caption .spot-title {
-      display: block;
-      font-size: clamp(1.35rem, 2.5vw, 1.9rem);
-      color: #fff;
-    }
-
-    .spotlight-caption span {
-      font-size: 0.8rem;
-      color: #e5e7eb;
-      font-weight: 700;
-    }
-
-    .spotlight-tag {
-      background: rgba(5, 5, 7, 0.85);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: var(--gold);
-      padding: 6px 12px;
-      border-radius: 99px;
-      font-size: 0.72rem;
-      font-weight: 800;
-      white-space: nowrap;
-    }
-
     .ticker {
       margin-top: 34px;
       border-top: 1px solid var(--border);
@@ -271,88 +226,49 @@
       100% { transform: translateX(50%); }
     }
 
-    /* Modern Gallery Section */
-    .gallery-section { padding: 54px 0 36px; }
+    /* Modern Clean Gallery */
+    .gallery-section { padding: 56px 0 84px; }
     .section-head {
       display: flex; justify-content: space-between; align-items: flex-end;
       flex-wrap: wrap; gap: 12px; margin-bottom: 24px;
     }
     .section-head span { color: var(--accent); font-weight: 800; font-size: 0.82rem; letter-spacing: 0.14em; display: block; }
-    .section-head h2 { font-size: clamp(1.6rem, 3.6vw, 2.6rem); font-weight: 900; }
-    .section-head p { color: var(--muted); font-size: 0.9rem; }
+    .section-head h2 { font-size: clamp(1.6rem, 3.6vw, 2.5rem); font-weight: 900; }
 
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      gap: 16px;
     }
 
-    .gallery-card {
+    .gallery-item {
       position: relative;
-      border-radius: 22px;
+      border-radius: 20px;
       overflow: hidden;
-      background: var(--surface);
+      background: #09090d;
       border: 1px solid var(--border);
       aspect-ratio: 4 / 5;
       cursor: pointer;
       transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.35s ease;
     }
 
-    .gallery-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(225, 29, 72, 0.55);
-      box-shadow: 0 24px 48px -16px rgba(0, 0, 0, 0.85);
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255, 255, 255, 0.24);
+      box-shadow: 0 22px 45px -16px rgba(0, 0, 0, 0.88);
     }
 
-    .gallery-card img {
+    .gallery-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center top;
       display: block;
-      transition: transform 0.5s ease;
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .gallery-card:hover img {
-      transform: scale(1.05);
-    }
-
-    .gallery-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 52%, rgba(4, 4, 6, 0.88) 100%);
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      padding: 18px;
-      opacity: 0.92;
-      transition: opacity 0.25s ease;
-    }
-
-    .gallery-meta strong {
-      display: block;
-      font-size: 1rem;
-      font-weight: 800;
-      color: #fff;
-    }
-
-    .gallery-meta small {
-      color: var(--muted);
-      font-size: 0.78rem;
-      font-weight: 700;
-    }
-
-    .expand-btn {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: rgba(225, 29, 72, 0.9);
-      color: #fff;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.9rem;
-      flex-shrink: 0;
+    .gallery-item:hover img {
+      transform: scale(1.045);
     }
 
     /* Lightbox Modal */
@@ -360,8 +276,8 @@
       position: fixed;
       inset: 0;
       z-index: 999;
-      background: rgba(3, 3, 5, 0.92);
-      backdrop-filter: blur(16px);
+      background: rgba(3, 3, 5, 0.94);
+      backdrop-filter: blur(18px);
       display: none;
       align-items: center;
       justify-content: center;
@@ -374,7 +290,7 @@
       position: relative;
       max-width: 780px;
       width: 100%;
-      border-radius: 24px;
+      border-radius: 22px;
       overflow: hidden;
       background: #09090d;
       border: 1px solid var(--border);
@@ -393,56 +309,17 @@
       position: absolute;
       top: 14px;
       left: 14px;
-      width: 42px;
-      height: 42px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       border: 1px solid var(--border);
       background: rgba(5, 5, 7, 0.85);
       color: #fff;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-    }
-
-    /* Pinned Video Stage */
-    .stage-section { padding: 48px 0 80px; }
-
-    .stage-box {
-      position: relative; width: 100%; aspect-ratio: 16 / 9;
-      border-radius: 22px; overflow: hidden; background: #07070a;
-      border: 1px solid rgba(255,255,255,0.13);
-      box-shadow: 0 32px 75px -15px rgba(0,0,0,0.92), 0 0 48px -18px var(--glow);
-    }
-
-    .top-bar-shield {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 76px;
-      background: linear-gradient(180deg, #07070a 68%, transparent);
-      z-index: 40;
-      pointer-events: none;
-    }
-
-    .popout-blocker {
-      position: absolute;
-      top: 8px;
-      left: 8px;
-      width: 96px;
-      height: 72px;
-      border-radius: 16px;
-      background: #07070a;
-      z-index: 50;
-      pointer-events: auto;
-      cursor: default;
-    }
-
-    .stage-box iframe {
-      position: relative; z-index: 10;
-      width: 100%; height: 100%; border: none; display: block;
     }
 
     footer { margin-top: auto; border-top: 1px solid var(--border); padding: 24px 0; text-align: center; color: var(--muted); font-size: 0.86rem; }
@@ -487,14 +364,9 @@
 
       .spotlight-frame { border-radius: 22px; padding: 8px; }
       .spotlight-inner { max-height: 450px; border-radius: 16px; }
-      .spotlight-caption { bottom: 14px; right: 14px; left: 14px; }
       .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-      .gallery-card { border-radius: 16px; }
-      .gallery-overlay { padding: 12px; }
-      .gallery-meta strong { font-size: 0.85rem; }
-      .expand-btn { width: 32px; height: 32px; font-size: 0.8rem; }
-      .popout-blocker { width: 78px; height: 60px; top: 6px; left: 6px; border-radius: 12px; }
-      .stage-section { padding: 36px 0 64px; }
+      .gallery-item { border-radius: 16px; }
+      .gallery-section { padding: 36px 0 64px; }
     }
   </style>
 </head>
@@ -568,14 +440,6 @@
       <div class="spotlight-frame">
         <div class="spotlight-inner">
           <img src="assts/sherif_khalid7.jpg" alt="شريف خالد">
-          <div class="spotlight-gradient"></div>
-          <div class="spotlight-caption">
-            <div>
-              <span class="clip-display-font spot-title">SHERIF KHALID</span>
-              <span>شريف خالد</span>
-            </div>
-            <span class="spotlight-tag en">15M+ FANS</span>
-          </div>
         </div>
       </div>
     </div>
@@ -585,98 +449,53 @@
         <span><i class="fa-solid fa-fire"></i> SHERIF KHALID</span>
         <span><i class="fa-solid fa-sparkles"></i> 12M+ TIKTOK</span>
         <span><i class="fa-solid fa-sparkles"></i> 3M+ INSTAGRAM</span>
-        <span><i class="fa-solid fa-music"></i> BABA YAD</span>
+        <span><i class="fa-solid fa-music"></i> OFFICIAL HUB</span>
         <span><i class="fa-solid fa-fire"></i> SHERIF KHALID</span>
         <span><i class="fa-solid fa-sparkles"></i> 12M+ TIKTOK</span>
         <span><i class="fa-solid fa-sparkles"></i> 3M+ INSTAGRAM</span>
-        <span><i class="fa-solid fa-music"></i> BABA YAD</span>
+        <span><i class="fa-solid fa-music"></i> OFFICIAL HUB</span>
       </div>
     </div>
   </section>
 
-  <!-- Modern Photo Gallery -->
   <section id="gallery" class="gallery-section">
     <div class="container">
       <div class="section-head">
         <div>
-          <span class="en">VISUAL GALLERY</span>
-          <h2>معرض صور شريف خالد</h2>
+          <span class="en">GALLERY</span>
+          <h2>الصور</h2>
         </div>
-        <p>اضغط على أي صورة لعرضها بالحجم الكامل</p>
       </div>
 
       <div class="gallery-grid">
-        <div class="gallery-card" onclick="openLightbox('assts/sherif_khalid7.jpg', 'شريف خالد — Spotlight')">
+        <div class="gallery-item" onclick="openLightbox('assts/sherif_khalid7.jpg')">
           <img src="assts/sherif_khalid7.jpg" alt="شريف خالد">
-          <div class="gallery-overlay">
-            <div class="gallery-meta">
-              <strong>Spotlight 01</strong>
-              <small>SHERIF KHALID</small>
-            </div>
-            <span class="expand-btn"><i class="fa-solid fa-expand"></i></span>
-          </div>
         </div>
 
-        <div class="gallery-card" onclick="openLightbox('assts/sherif_khalid2.jpg', 'شريف خالد — Look 02')">
+        <div class="gallery-item" onclick="openLightbox('assts/sherif_khalid2.jpg')">
           <img src="assts/sherif_khalid2.jpg" alt="شريف خالد">
-          <div class="gallery-overlay">
-            <div class="gallery-meta">
-              <strong>Editorial 02</strong>
-              <small>SHERIF KHALID</small>
-            </div>
-            <span class="expand-btn"><i class="fa-solid fa-expand"></i></span>
-          </div>
         </div>
 
-        <div class="gallery-card" onclick="openLightbox('assts/sherif_khalid3.jpg', 'شريف خالد — Look 03')">
+        <div class="gallery-item" onclick="openLightbox('assts/sherif_khalid3.jpg')">
           <img src="assts/sherif_khalid3.jpg" alt="شريف خالد">
-          <div class="gallery-overlay">
-            <div class="gallery-meta">
-              <strong>Stage 03</strong>
-              <small>SHERIF KHALID</small>
-            </div>
-            <span class="expand-btn"><i class="fa-solid fa-expand"></i></span>
-          </div>
         </div>
 
-        <div class="gallery-card" onclick="openLightbox('assts/sherif_khalid4.jpg', 'شريف خالد — Look 04')">
+        <div class="gallery-item" onclick="openLightbox('assts/sherif_khalid4.jpg')">
           <img src="assts/sherif_khalid4.jpg" alt="شريف خالد">
-          <div class="gallery-overlay">
-            <div class="gallery-meta">
-              <strong>Session 04</strong>
-              <small>SHERIF KHALID</small>
-            </div>
-            <span class="expand-btn"><i class="fa-solid fa-expand"></i></span>
-          </div>
         </div>
 
-        <div class="gallery-card" onclick="openLightbox('assts/sherif_khalid5.jpg', 'شريف خالد — Look 05')">
-          <img src="assts/sherif_khalid5.jpg" alt="شريف خالد">
-          <div class="gallery-overlay">
-            <div class="gallery-meta">
-              <strong>Night 05</strong>
-              <small>SHERIF KHALID</small>
-            </div>
-            <span class="expand-btn"><i class="fa-solid fa-expand"></i></span>
-          </div>
+        <div class="gallery-item" onclick="openLightbox('assts/zherif_khalid5.jpg')">
+          <img src="assts/zherif_khalid5.jpg" alt="شريف خالد">
         </div>
 
-        <div class="gallery-card" onclick="openLightbox('assts/shreif+khalid6.jpg', 'شريف خالد — Look 06')">
+        <div class="gallery-item" onclick="openLightbox('assts/shreif+khalid6.jpg')">
           <img src="assts/shreif+khalid6.jpg" alt="شريف خالد">
-          <div class="gallery-overlay">
-            <div class="gallery-meta">
-              <strong>Exclusive 06</strong>
-              <small>SHERIF KHALID</small>
-            </div>
-            <span class="expand-btn"><i class="fa-solid fa-expand"></i></span>
-          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Lightbox Modal -->
-  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
     <div class="lightbox-box" onclick="event.stopPropagation()">
       <button type="button" class="lightbox-close" onclick="closeLightbox()" aria-label="إغلاق">
         <i class="fa-solid fa-xmark"></i>
@@ -684,27 +503,6 @@
       <img id="lightboxImg" src="" alt="معاينة الصورة">
     </div>
   </div>
-
-  <section id="baba-yad-stage" class="stage-section">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <span class="en">FEATURED RELEASE</span>
-          <h2>بابا ياض — شريف خالد</h2>
-        </div>
-      </div>
-
-      <div class="stage-box">
-        <div class="top-bar-shield"></div>
-        <div class="popout-blocker"></div>
-        <iframe
-          src="https://drive.google.com/file/d/1-lU7XJ8MST3x_Mo7UfRbabdMzoVzhFSf/preview"
-          allow="autoplay; fullscreen"
-          allowfullscreen>
-        </iframe>
-      </div>
-    </div>
-  </section>
 
   <footer>
     <div class="container en">SHERIF KHALID OFFICIAL © 2026</div>
@@ -729,11 +527,10 @@
       }
     });
 
-    function openLightbox(src, altText) {
+    function openLightbox(src) {
       const lb = document.getElementById('lightbox');
       const img = document.getElementById('lightboxImg');
       img.src = src;
-      img.alt = altText;
       lb.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
