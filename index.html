@@ -142,11 +142,15 @@
       width: 100%;
     }
 
+    /* تثبيت اتجاه اللوجو ليظل OFFICIAL على يمين الاسم في العربي والإنجليزي */
     .brand {
+      direction: rtl;
+      unicode-bidi: isolate;
       text-decoration: none;
       color: #fff;
       font-size: clamp(1.2rem, 2.2vw, 1.5rem);
       display: inline-flex;
+      flex-direction: row;
       align-items: center;
       gap: 10px;
       flex-shrink: 0;
@@ -272,6 +276,10 @@
       color: #e4e4e7;
       font-size: clamp(0.98rem, 1.3vw, 1.06rem);
       line-height: 1.85;
+    }
+
+    .no-wrap {
+      white-space: nowrap;
     }
 
     .stats-inline {
@@ -548,7 +556,9 @@
           </h1>
 
           <div class="bio-block">
-              Sherif Khalid is a 27-year-old Egyptian content creator and influencer born in Al-Amireya, Cairo. He is one of the ambitious young figures who has built a strong presence across social media platforms, especially TikTok.
+            <h2 class="bio-heading" data-i18n="bioHeading">Sherif Khalid | شريف خالد</h2>
+            <p data-i18n-html="bioP1">
+              Sherif Khalid is a 28-year-old Egyptian content creator and influencer born in <span class="no-wrap">Al-Amireya</span>, Cairo. He is one of the ambitious young figures who has built a strong presence across social media platforms, especially TikTok.
             </p>
             <p data-i18n="bioP2">
               He started his content creation journey in 2018, and through determination, passion, and ambition, he built a large audience of millions of followers and achieved notable success in the social media space.
@@ -658,7 +668,7 @@
         navJourney: 'Journey',
         navContact: 'Contact & Bookings',
         bioHeading: 'Sherif Khalid | شريف خالد',
-        bioP1: 'Sherif Khalid is a 27-year-old Egyptian content creator and influencer born in Al-Amireya, Cairo. He is one of the ambitious young figures who has built a strong presence across social media platforms, especially TikTok.',
+        bioP1: 'Sherif Khalid is a 28-year-old Egyptian content creator and influencer born in <span class="no-wrap">Al-Amireya</span>, Cairo. He is one of the ambitious young figures who has built a strong presence across social media platforms, especially TikTok.',
         bioP2: 'He started his content creation journey in 2018, and through determination, passion, and ambition, he built a large audience of millions of followers and achieved notable success in the social media space.',
         bioP3: 'His ambitions went beyond content creation into music and performance, taking on diverse experiences that helped diversify his career and expand his reach with audiences.',
         bioP4: 'Sherif Khalid represents an ambitious young creator continuously striving to grow, turn passion and ideas into real achievements, and pursue even greater success and excellence.',
@@ -683,7 +693,7 @@
         navJourney: 'الرحلة',
         navContact: 'التواصل والإعلانات',
         bioHeading: 'شريف خالد | Sherif Khalid',
-        bioP1: 'شريف خالد هو صانع محتوى ومؤثر مصري يبلغ من العمر 27 عامًا، وُلد في منطقة الأميرية بمحافظة القاهرة. يُعد من الشخصيات الشابة الطموحة التي استطاعت أن تصنع لنفسها حضورًا مميزًا على منصات التواصل الاجتماعي، وخاصة TikTok.',
+        bioP1: 'شريف خالد هو صانع محتوى ومؤثر مصري يبلغ من العمر 28 عامًا، وُلد في منطقة الأميرية بمحافظة القاهرة. يُعد من الشخصيات الشابة الطموحة التي استطاعت أن تصنع لنفسها حضورًا مميزًا على منصات التواصل الاجتماعي، وخاصة TikTok.',
         bioP2: 'بدأ رحلته في صناعة المحتوى عام 2018، واستطاع من خلال إصراره وشغفه وطموحه أن يبني قاعدة جماهيرية كبيرة تضم ملايين المتابعين، وأن يحقق نجاحًا ملحوظًا في عالم السوشيال ميديا.',
         bioP3: 'ولم تتوقف طموحاته عند صناعة المحتوى، بل امتدت إلى المجال الفني والغنائي، حيث خاض تجارب متعددة ساهمت في تنويع مسيرته وتوسيع حضوره الجماهيري.',
         bioP4: 'يمثل شريف خالد نموذجًا للشاب الطموح الذي يسعى باستمرار إلى تطوير نفسه، وتحويل شغفه وأفكاره إلى إنجازات حقيقية، مع الاستمرار في السعي نحو المزيد من النجاح والتميز.',
@@ -715,6 +725,13 @@
         const key = el.getAttribute('data-i18n');
         if (dict[key] !== undefined) {
           el.textContent = dict[key];
+        }
+      });
+
+      document.querySelectorAll('[data-i18n-html]').forEach((el) => {
+        const key = el.getAttribute('data-i18n-html');
+        if (dict[key] !== undefined) {
+          el.innerHTML = dict[key];
         }
       });
     }
