@@ -11,14 +11,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Cairo:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #050709;
-      --panel: rgba(12, 16, 20, 0.72);
-      --panel-hover: rgba(18, 24, 30, 0.85);
-      --border: rgba(255, 255, 255, 0.08);
-      --text: #f1f5f9;
-      --muted: #94a3b8;
-      --accent: #10b981;
-      --accent-soft: rgba(16, 185, 129, 0.14);
+      --bg: #050507;
+      --text: #f8fafc;
+      --muted: #a1a1aa;
+      --accent: #e11d48;
+      --line: rgba(255, 255, 255, 0.1);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
@@ -35,36 +32,35 @@
       position: relative;
     }
 
-    /* خلفية الفيديو المستمرة بـ opacity واطي وتسويد دارك */
-    .bg-video-layer {
+    /* فيديو الخلفية الصامت المستمر كأنه GIF */
+    .ambient-video-bg {
       position: fixed;
       inset: 0;
       z-index: -2;
-      overflow: hidden;
       pointer-events: none;
-      background: #050709;
+      overflow: hidden;
+      background: #050507;
     }
 
-    .bg-video-layer video {
+    .ambient-video-bg video {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.13;
-      filter: grayscale(35%) contrast(1.08);
+      opacity: 0.22;
+      filter: saturate(0.85) contrast(1.06);
     }
 
-    .bg-dark-scrim {
+    .ambient-overlay {
       position: fixed;
       inset: 0;
       z-index: -1;
       pointer-events: none;
       background:
-        radial-gradient(circle at 80% 15%, rgba(16, 185, 129, 0.09), transparent 42%),
-        linear-gradient(180deg, rgba(5, 7, 9, 0.78) 0%, rgba(5, 7, 9, 0.88) 55%, rgba(5, 7, 9, 0.96) 100%);
+        linear-gradient(180deg, rgba(5, 5, 7, 0.68) 0%, rgba(5, 5, 7, 0.78) 50%, rgba(5, 5, 7, 0.92) 100%);
     }
 
     .num { font-family: 'Plus Jakarta Sans', sans-serif; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 22px; width: 100%; }
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
     .clip-brand-font {
       font-family: 'Anton', 'Archivo Black', sans-serif;
@@ -82,11 +78,11 @@
       position: sticky;
       top: 0;
       z-index: 300;
-      background: rgba(5, 7, 9, 0.82);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      padding: 15px 0;
+      background: rgba(5, 5, 7, 0.78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+      padding: 16px 0;
     }
 
     .nav-wrap {
@@ -106,31 +102,22 @@
       gap: 10px;
     }
 
-    .brand-tag {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.68rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-      border: 1px solid rgba(16, 185, 129, 0.35);
-      background: var(--accent-soft);
-      padding: 2px 8px;
-      border-radius: 6px;
+    .brand-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent);
       transform: skewX(7deg);
     }
 
-    nav {
-      display: flex;
-      gap: 26px;
-      align-items: center;
-    }
+    nav { display: flex; gap: 28px; align-items: center; }
 
     nav a {
       text-decoration: none;
       color: var(--muted);
       font-weight: 700;
-      font-size: 0.94rem;
-      padding: 6px 2px;
+      font-size: 0.95rem;
       transition: color 0.2s ease;
     }
 
@@ -145,8 +132,8 @@
 
     .menu-btn {
       display: none;
-      background: var(--panel);
-      border: 1px solid var(--border);
+      background: transparent;
+      border: 1px solid var(--line);
       color: #fff;
       padding: 8px 14px;
       border-radius: 10px;
@@ -156,199 +143,100 @@
       cursor: pointer;
     }
 
-    /* Hero */
-    .hero {
-      padding: 58px 0 38px;
+    /* Main Seamless Flow */
+    .main-flow {
+      padding: 64px 0 90px;
     }
 
-    .hero-grid {
+    .top-intro {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
-      gap: 44px;
+      gap: 48px;
       align-items: center;
-    }
-
-    .hero-kicker {
-      display: inline-block;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.74rem;
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 12px;
+      margin-bottom: 72px;
     }
 
     h1 .hero-title {
       display: block;
-      font-size: clamp(3rem, 7vw, 5.7rem);
-      background: linear-gradient(180deg, #ffffff 35%, #94a3b8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: clamp(3.2rem, 7.5vw, 6.2rem);
+      color: #fff;
       transform-origin: right center;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
+      text-shadow: 0 12px 32px rgba(0, 0, 0, 0.7);
     }
 
-    .hero-desc {
-      color: var(--muted);
-      font-size: clamp(1rem, 1.35vw, 1.08rem);
-      line-height: 1.85;
+    .intro-text {
+      color: #d4d4d8;
+      font-size: clamp(1.02rem, 1.4vw, 1.12rem);
+      line-height: 1.9;
       max-width: 540px;
-      margin-bottom: 28px;
+      margin-bottom: 34px;
     }
 
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      max-width: 560px;
+    .stats-inline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 36px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
     }
 
-    .stat-card {
-      background: var(--panel);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 18px 14px;
-      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
-    }
-
-    .stat-card:hover {
-      transform: translateY(-3px);
-      background: var(--panel-hover);
-      border-color: rgba(16, 185, 129, 0.4);
-    }
-
-    .stat-num {
-      font-size: clamp(1.5rem, 2.4vw, 1.95rem);
+    .stat-item strong {
+      display: block;
+      font-size: clamp(1.7rem, 3vw, 2.3rem);
       font-weight: 800;
       color: #fff;
-      line-height: 1.1;
+      line-height: 1.05;
     }
 
-    .stat-label {
-      font-size: 0.82rem;
+    .stat-item span {
+      display: block;
+      font-size: 0.85rem;
       color: var(--muted);
       font-weight: 700;
       margin-top: 6px;
     }
 
-    .hero-photo {
-      border-radius: 26px;
-      padding: 10px;
-      background: var(--panel);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--border);
-      box-shadow: 0 28px 65px -22px rgba(0, 0, 0, 0.9);
-    }
-
-    .hero-photo img {
+    .lead-portrait {
       width: 100%;
       aspect-ratio: 4 / 5;
-      max-height: 560px;
+      max-height: 580px;
       object-fit: cover;
       object-position: center top;
-      border-radius: 18px;
+      border-radius: 24px;
       display: block;
+      box-shadow: 0 28px 65px rgba(0, 0, 0, 0.75);
     }
 
-    /* Section Headings */
-    .sec-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 24px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .sec-head .tag {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.74rem;
-      font-weight: 800;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .sec-head h2 {
+    /* Seamless Photo Stream (بدون كروت أو حدود مكدسة) */
+    .stream-heading {
       font-size: clamp(1.5rem, 3vw, 2.2rem);
       font-weight: 900;
       color: #fff;
+      margin-bottom: 28px;
     }
 
-    /* Reel Video (9 / 16) */
-    .reel-section {
-      padding: 44px 0 36px;
-    }
-
-    .reel-center {
-      display: flex;
-      justify-content: center;
-    }
-
-    .reel-frame {
-      width: 100%;
-      max-width: 390px;
-      aspect-ratio: 9 / 16;
-      border-radius: 26px;
-      padding: 8px;
-      background: var(--panel);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(16, 185, 129, 0.25);
-      box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.92);
-    }
-
-    .reel-frame video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 19px;
-      display: block;
-      background: #050709;
-    }
-
-    /* Gallery */
-    .gallery-section {
-      padding: 44px 0 80px;
-    }
-
-    .gallery-grid {
+    .photo-stream {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      align-items: start;
     }
 
-    .gallery-card {
-      border-radius: 20px;
-      overflow: hidden;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      aspect-ratio: 4 / 5;
-      cursor: pointer;
-      transition: transform 0.3s ease, border-color 0.3s ease;
-    }
-
-    .gallery-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(16, 185, 129, 0.45);
-    }
-
-    .gallery-card img {
+    .photo-stream img {
       width: 100%;
-      height: 100%;
+      aspect-ratio: 4 / 5;
       object-fit: cover;
       object-position: center top;
+      border-radius: 20px;
       display: block;
-      transition: transform 0.45s ease;
+      cursor: pointer;
+      transition: transform 0.35s ease, opacity 0.35s ease;
     }
 
-    .gallery-card:hover img {
-      transform: scale(1.04);
+    .photo-stream img:hover {
+      transform: scale(1.02);
+      opacity: 0.95;
     }
 
     /* Lightbox */
@@ -356,7 +244,7 @@
       position: fixed;
       inset: 0;
       z-index: 999;
-      background: rgba(5, 7, 9, 0.92);
+      background: rgba(5, 5, 7, 0.94);
       backdrop-filter: blur(16px);
       display: none;
       align-items: center;
@@ -370,18 +258,14 @@
       position: relative;
       max-width: 780px;
       width: 100%;
-      border-radius: 22px;
-      overflow: hidden;
-      background: #090c10;
-      border: 1px solid var(--border);
     }
 
     .lightbox-panel img {
       width: 100%;
-      max-height: 82dvh;
+      max-height: 84dvh;
       object-fit: contain;
+      border-radius: 18px;
       display: block;
-      background: #050709;
     }
 
     .lightbox-close {
@@ -390,8 +274,8 @@
       left: 14px;
       padding: 8px 14px;
       border-radius: 10px;
-      border: 1px solid var(--border);
-      background: rgba(5, 7, 9, 0.88);
+      border: 1px solid var(--line);
+      background: rgba(5, 5, 7, 0.88);
       color: #fff;
       font-family: 'Cairo', sans-serif;
       font-weight: 800;
@@ -402,9 +286,9 @@
     /* Footer */
     footer {
       margin-top: auto;
-      border-top: 1px solid var(--border);
-      background: rgba(5, 7, 9, 0.82);
-      backdrop-filter: blur(14px);
+      border-top: 1px solid var(--line);
+      background: rgba(5, 5, 7, 0.82);
+      backdrop-filter: blur(16px);
       padding: 40px 0 26px;
     }
 
@@ -413,7 +297,7 @@
       grid-template-columns: 1.4fr 1fr 1fr;
       gap: 32px;
       padding-bottom: 28px;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--line);
     }
 
     .footer-brand p {
@@ -446,9 +330,7 @@
       transition: color 0.2s ease;
     }
 
-    .footer-links a:hover {
-      color: var(--accent);
-    }
+    .footer-links a:hover { color: var(--accent); }
 
     .footer-bottom {
       padding-top: 20px;
@@ -461,9 +343,8 @@
       font-size: 0.84rem;
     }
 
-    @media (max-width: 960px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 32px; }
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    @media (max-width: 900px) {
+      .top-intro { grid-template-columns: 1fr; gap: 32px; margin-bottom: 52px; }
       .footer-grid { grid-template-columns: 1fr; gap: 24px; }
 
       nav {
@@ -472,12 +353,12 @@
         top: 66px;
         right: 0;
         left: 0;
-        background: rgba(6, 8, 11, 0.98);
+        background: rgba(5, 5, 7, 0.98);
         backdrop-filter: blur(20px);
         flex-direction: column;
         padding: 22px 20px;
         gap: 16px;
-        border-bottom: 1px solid var(--border);
+        border-bottom: 1px solid var(--line);
         z-index: 290;
       }
       nav.open { display: flex; }
@@ -485,114 +366,66 @@
     }
 
     @media (max-width: 600px) {
-      .container { padding: 0 16px; }
-      .hero { padding: 34px 0 24px; }
-      .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-      .stat-card { padding: 12px 8px; border-radius: 14px; text-align: center; }
-      .stat-num { font-size: 1.25rem; }
-      .stat-label { font-size: 0.72rem; }
-
-      .reel-frame { max-width: 340px; border-radius: 22px; }
-      .reel-frame video { border-radius: 16px; }
-
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-      .gallery-card { border-radius: 16px; }
+      .container { padding: 0 18px; }
+      .main-flow { padding: 36px 0 64px; }
+      .stats-inline { gap: 22px; }
+      .photo-stream { grid-template-columns: 1fr; gap: 16px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- خلفية الفيديو المستمرة للموقع -->
-  <div class="bg-video-layer" aria-hidden="true">
+  <!-- خلفية الفيديو الصامت المستمرة كـ GIF -->
+  <div class="ambient-video-bg" aria-hidden="true">
     <video autoplay muted loop playsinline preload="auto">
       <source src="assts/shx.mp4" type="video/mp4">
     </video>
   </div>
-  <div class="bg-dark-scrim" aria-hidden="true"></div>
+  <div class="ambient-overlay" aria-hidden="true"></div>
 
   <div id="site-header"></div>
 
-  <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <span class="hero-kicker">OFFICIAL HUB</span>
-        <h1>
-          <span class="clip-brand-font hero-title">SHERIF KHALID</span>
-        </h1>
-
-        <p class="hero-desc">
-          حضور جماهيري يتخطى 16 مليون متابع عبر المنصات، وأعمال غنائية وجولات حية. هنا المساحة الرسمية لكل جديد وللتواصل المباشر.
-        </p>
-
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-num num counter" data-target="12" data-suffix="M+">0</div>
-            <div class="stat-label">متابع على TikTok</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-num num counter" data-target="3" data-suffix="M+">0</div>
-            <div class="stat-label">متابع على Instagram</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-num num counter" data-target="1" data-suffix="M+">0</div>
-            <div class="stat-label">متابع على YouTube</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-photo">
-        <img src="assts/sherif_khalid7.jpg" alt="شريف خالد">
-      </div>
-    </div>
-  </section>
-
-  <section id="reel-video" class="reel-section">
+  <main class="main-flow">
     <div class="container">
-      <div class="sec-head">
+      <section class="top-intro">
         <div>
-          <span class="tag">REEL SHOWCASE</span>
-          <h2>شريف خالد</h2>
-        </div>
-      </div>
+          <h1>
+            <span class="clip-brand-font hero-title">SHERIF KHALID</span>
+          </h1>
 
-      <div class="reel-center">
-        <div class="reel-frame">
-          <video autoplay muted loop playsinline controls preload="auto" poster="assts/sherif_khalid7.jpg">
-            <source src="assts/shx.mp4" type="video/mp4">
-          </video>
+          <p class="intro-text">
+            حضور جماهيري يتخطى 16 مليون متابع عبر المنصات، وأعمال غنائية وجولات حية. هنا المساحة الرسمية لكل جديد وللتواصل المباشر.
+          </p>
+
+          <div class="stats-inline">
+            <div class="stat-item">
+              <strong class="num counter" data-target="12" data-suffix="M+">0</strong>
+              <span>متابع على TikTok</span>
+            </div>
+            <div class="stat-item">
+              <strong class="num counter" data-target="3" data-suffix="M+">0</strong>
+              <span>متابع على Instagram</span>
+            </div>
+            <div class="stat-item">
+              <strong class="num counter" data-target="1" data-suffix="M+">0</strong>
+              <span>متابع على YouTube</span>
+            </div>
+          </div>
         </div>
+
+        <img class="lead-portrait" src="assts/sherif_khalid7.jpg" alt="شريف خالد">
+      </section>
+
+      <h2 class="stream-heading">الصور</h2>
+      <div class="photo-stream">
+        <img src="assts/sherif_khalid2.jpg" alt="شريف خالد" onclick="openLightbox(this.src)">
+        <img src="assts/sherif_khahid.jpg" alt="شريف خالد" onclick="openLightbox(this.src)">
+        <img src="assts/sherif_khalid4.jpg" alt="شريف خالد" onclick="openLightbox(this.src)">
+        <img src="assts/zherif_khalid5.jpg" alt="شريف خالد" onclick="openLightbox(this.src)">
+        <img src="assts/shreif+khalid6.jpg" alt="شريف خالد" onclick="openLightbox(this.src)">
       </div>
     </div>
-  </section>
-
-  <section id="gallery" class="gallery-section">
-    <div class="container">
-      <div class="sec-head">
-        <div>
-          <span class="tag">GALLERY</span>
-          <h2>الصور</h2>
-        </div>
-      </div>
-
-      <div class="gallery-grid">
-        <div class="gallery-card" onclick="openLightbox('assts/sherif_khalid2.jpg')">
-          <img src="assts/sherif_khalid2.jpg" alt="شريف خالد">
-        </div>
-        <div class="gallery-card" onclick="openLightbox('assts/sherif_khahid.jpg')">
-          <img src="assts/sherif_khahid.jpg" alt="شريف خالد">
-        </div>
-        <div class="gallery-card" onclick="openLightbox('assts/sherif_khalid4.jpg')">
-          <img src="assts/sherif_khalid4.jpg" alt="شريف خالد">
-        </div>
-        <div class="gallery-card" onclick="openLightbox('assts/zherif_khalid5.jpg')">
-          <img src="assts/zherif_khalid5.jpg" alt="شريف خالد">
-        </div>
-        <div class="gallery-card" onclick="openLightbox('assts/shreif+khalid6.jpg')">
-          <img src="assts/shreif+khalid6.jpg" alt="شريف خالد">
-        </div>
-      </div>
-    </div>
-  </section>
+  </main>
 
   <div class="lightbox" id="lightbox" onclick="closeLightbox()">
     <div class="lightbox-panel" onclick="event.stopPropagation()">
