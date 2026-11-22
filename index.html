@@ -3,63 +3,200 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>الأعمال والفيديوهات | شريف خالد</title>
+  <title>SHERIF KHALID | شريف خالد - الموقع الرسمي</title>
   <link rel="icon" href="assets/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <style>
-    :root { --bg: #050507; --surface: rgba(255,255,255,0.03); --border: rgba(255,255,255,0.08); --text: #fff; --muted: #9ca3af; --accent: #e11d48; }
+    :root {
+      --bg: #050507;
+      --surface: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.09);
+      --text: #ffffff;
+      --muted: #9ca3af;
+      --accent: #e11d48;
+      --glow: rgba(225, 29, 72, 0.35);
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: var(--bg); color: var(--text); font-family: 'Cairo', sans-serif; min-height: 100vh; display: flex; flex-direction: column; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Cairo', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
     .en { font-family: 'Syne', sans-serif; letter-spacing: 0.05em; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
-    header { position: sticky; top: 0; z-index: 100; background: rgba(5,5,7,0.88); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 16px 0; }
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(5, 5, 7, 0.88); backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border); padding: 16px 0;
+    }
     .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
     .brand { text-decoration: none; color: #fff; font-weight: 800; font-size: 1.2rem; display: flex; align-items: center; gap: 8px; }
-    .brand span.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+    .brand span.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
     nav { display: flex; gap: 28px; }
     nav a { text-decoration: none; color: var(--muted); font-weight: 700; font-size: 0.95rem; transition: 0.3s; }
     nav a:hover, nav a.active { color: var(--accent); }
     .menu-btn { display: none; background: none; border: none; color: #fff; font-size: 1.4rem; cursor: pointer; }
 
-    main { flex: 1; padding: 60px 0; }
-    .page-head { text-align: center; margin-bottom: 40px; }
-    .page-head span { color: var(--accent); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.1em; }
-    .page-head h1 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; margin: 8px 0 20px; }
+    /* Hero */
+    .hero { position: relative; padding: 56px 0 36px; }
+    .ambient-glow {
+      position: absolute; top: 0; right: 15%; width: 460px; height: 460px;
+      background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
+      filter: blur(95px); z-index: -1; pointer-events: none;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 44px; align-items: center; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 99px;
+      font-size: 0.85rem; color: var(--muted); margin-bottom: 18px;
+    }
+    .pill i { color: var(--accent); font-size: 0.6rem; }
+    h1 { font-size: clamp(2.8rem, 6vw, 4.8rem); font-weight: 900; line-height: 1.08; margin-bottom: 16px; }
+    h1 span { display: block; font-size: 0.95rem; color: var(--accent); letter-spacing: 0.14em; margin-bottom: 6px; }
+    .lead { color: var(--muted); font-size: 1.05rem; line-height: 1.75; max-width: 540px; margin-bottom: 28px; }
 
-    .tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
-    .tab-btn {
-      background: var(--surface); border: 1px solid var(--border); color: var(--muted);
-      padding: 8px 22px; border-radius: 99px; font-family: inherit; font-weight: 700; cursor: pointer; transition: 0.3s;
+    .cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 30px; }
+    .btn {
+      padding: 13px 26px; border-radius: 12px; font-weight: 700; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; font-size: 0.95rem; cursor: pointer; border: none;
     }
-    .tab-btn.active, .tab-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 10px 25px -5px var(--glow); }
+    .btn-primary:hover { transform: translateY(-2px); }
+    .btn-outline { background: var(--surface); color: #fff; border: 1px solid var(--border); }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.3); }
 
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
-    .card {
-      background: var(--surface); border: 1px solid var(--border); border-radius: 20px; overflow: hidden;
-      transition: transform 0.3s, border-color 0.3s;
+    .socials-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 520px; }
+    .social-box {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+      padding: 12px 8px; text-align: center; text-decoration: none; color: #fff;
+      transition: 0.3s; display: flex; flex-direction: column; align-items: center; gap: 5px;
     }
-    .card:hover { transform: translateY(-6px); border-color: rgba(255,255,255,0.22); }
-    .thumb { position: relative; height: 220px; }
-    .thumb img { width: 100%; height: 100%; object-fit: cover; }
-    .badge {
-      position: absolute; top: 14px; right: 14px; background: rgba(5,5,7,0.85);
-      padding: 4px 12px; border-radius: 99px; font-size: 0.78rem; font-weight: 700; border: 1px solid var(--border);
-    }
-    .overlay {
-      position: absolute; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center;
-      color: #fff; font-size: 1.8rem; text-decoration: none; opacity: 0; transition: 0.3s;
-    }
-    .card:hover .overlay { opacity: 1; }
-    .card-body { padding: 22px; }
-    .card-body h3 { font-size: 1.2rem; margin-bottom: 8px; }
-    .card-body p { color: var(--muted); font-size: 0.92rem; margin-bottom: 16px; }
-    .watch-link { color: var(--accent); text-decoration: none; font-weight: 700; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 6px; }
+    .social-box i { font-size: 1.2rem; color: var(--accent); }
+    .social-box span { font-size: 0.78rem; font-weight: 700; color: var(--muted); }
+    .social-box:hover { border-color: var(--accent); transform: translateY(-3px); background: rgba(225,29,72,0.08); }
+    .social-box:hover span { color: #fff; }
 
-    footer { border-top: 1px solid var(--border); padding: 24px 0; text-align: center; color: var(--muted); font-size: 0.88rem; }
+    /* Photo Card */
+    .photo-card {
+      position: relative; border-radius: 24px; padding: 10px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.01));
+      border: 1px solid var(--border);
+    }
+    .photo-card img { width: 100%; height: 470px; object-fit: cover; border-radius: 18px; display: block; }
+    .tag-float {
+      position: absolute; bottom: 22px; right: -12px; background: rgba(5,5,7,0.92);
+      backdrop-filter: blur(12px); border: 1px solid var(--border); padding: 12px 18px; border-radius: 14px;
+    }
+    .tag-float strong { display: block; font-size: 1.15rem; color: #fff; }
+    .tag-float small { color: var(--muted); font-size: 0.8rem; }
+
+    /* Pinned Cinema Video Stage */
+    .cinema-section { padding: 48px 0 80px; }
+    .cinema-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      flex-wrap: wrap; gap: 16px; margin-bottom: 22px;
+    }
+    .cinema-header span { color: var(--accent); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.1em; display: block; }
+    .cinema-header h2 { font-size: clamp(1.7rem, 3.5vw, 2.5rem); font-weight: 900; }
+    .cinema-meta { color: var(--muted); font-size: 0.9rem; }
+
+    .cinema-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 24px;
+      overflow: hidden;
+      background: #000;
+      border: 1px solid var(--border);
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.85);
+    }
+
+    /* طبقة غطاء مخصصة قبل التشغيل لإخفاء شكل مشغل يوتيوب */
+    .custom-poster {
+      position: absolute;
+      inset: 0;
+      z-index: 20;
+      background: linear-gradient(to top, rgba(5,5,7,0.92), rgba(5,5,7,0.35)),
+                  url('https://img.youtube.com/vi/L9VN7d_3Z7U/maxresdefault.jpg') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 36px;
+      cursor: pointer;
+      transition: opacity 0.45s ease, visibility 0.45s ease;
+    }
+    .custom-poster.playing {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .play-trigger {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 82px;
+      height: 82px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      border: 4px solid rgba(255,255,255,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.9rem;
+      box-shadow: 0 0 35px var(--glow);
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+    .custom-poster:hover .play-trigger {
+      transform: translate(-50%, -50%) scale(1.08);
+      background: #f43f5e;
+    }
+    .poster-title { font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 900; margin-bottom: 6px; }
+    .poster-sub { color: #d1d5db; font-size: 0.95rem; }
+
+    /* إخفاء شريط العنوان العلوي الخاص بيوتيوب بعد التشغيل */
+    .top-mask {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 68px;
+      background: linear-gradient(to bottom, #000 35%, transparent);
+      z-index: 15;
+      pointer-events: none;
+    }
+
+    .cinema-frame iframe {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    footer { margin-top: auto; border-top: 1px solid var(--border); padding: 24px 0; text-align: center; color: var(--muted); font-size: 0.88rem; }
+
     @media (max-width: 880px) {
-      nav { display: none; position: absolute; top: 65px; right: 0; width: 100%; background: #08080b; flex-direction: column; padding: 24px; border-bottom: 1px solid var(--border); }
+      .hero-grid { grid-template-columns: 1fr; }
+      .tag-float { right: 12px; }
+      .socials-grid { grid-template-columns: repeat(2, 1fr); }
+      .custom-poster { padding: 20px; }
+      .play-trigger { width: 64px; height: 64px; font-size: 1.4rem; }
+      nav {
+        display: none; position: absolute; top: 65px; right: 0; width: 100%;
+        background: #08080b; flex-direction: column; padding: 24px; border-bottom: 1px solid var(--border);
+      }
       nav.open { display: flex; }
       .menu-btn { display: block; }
     }
@@ -71,8 +208,8 @@
     <div class="container nav-wrap">
       <a href="index.html" class="brand en">SHERIF KHALID <span class="dot"></span></a>
       <nav id="navMenu">
-        <a href="index.html">الرئيسية</a>
-        <a href="works.html" class="active">الأعمال والفيديوهات</a>
+        <a href="index.html" class="active">الرئيسية</a>
+        <a href="works.html">الأعمال والفيديوهات</a>
         <a href="journey.html">الرحلة (منذ ٢٠١٨)</a>
         <a href="contact.html">التواصل والإعلانات</a>
       </nav>
@@ -80,78 +217,103 @@
     </div>
   </header>
 
-  <main>
-    <div class="container">
-      <div class="page-head">
-        <span class="en">FEATURED RELEASES</span>
-        <h1>أبرز الأعمال والفيديوهات</h1>
-        <div class="tabs">
-          <button class="tab-btn active" data-cat="all">الكل</button>
-          <button class="tab-btn" data-cat="youtube">يوتيوب وأغاني</button>
-          <button class="tab-btn" data-cat="instagram">إنستجرام وريلز</button>
-          <button class="tab-btn" data-cat="facebook">فيسبوك وتيك توك</button>
+  <section class="hero">
+    <div class="ambient-glow"></div>
+    <div class="container hero-grid">
+      <div>
+        <div class="pill"><i class="fa-solid fa-circle"></i> صانع محتوى ومغني مصري • منذ ٢٠١٨</div>
+        <h1>
+          <span>THE OFFICIAL HUB</span>
+          شريف خالد
+        </h1>
+        <p class="lead">
+          من بدايات تيك توك في ٢٠١٨ إلى المهرجانات والأغاني والمحتوى الترفيهي. الموقع الرسمي لمتابعة أحدث الإصدارات والمنصات والتواصل المباشر.
+        </p>
+
+        <div class="cta-row">
+          <a href="#featured-video" class="btn btn-primary"><i class="fa-solid fa-play"></i> مشاهدة بابا ياض</a>
+          <a href="contact.html" class="btn btn-outline">حجز إعلانات وحفلات</a>
+        </div>
+
+        <div class="socials-grid">
+          <a href="https://www.instagram.com/_sherif_khalid/?hl=ar" target="_blank" rel="noopener" class="social-box">
+            <i class="fa-brands fa-instagram"></i>
+            <span>Instagram</span>
+          </a>
+          <a href="https://www.youtube.com/@sherifkhalid8422" target="_blank" rel="noopener" class="social-box">
+            <i class="fa-brands fa-youtube"></i>
+            <span>YouTube</span>
+          </a>
+          <a href="https://www.facebook.com/sherif770" target="_blank" rel="noopener" class="social-box">
+            <i class="fa-brands fa-facebook-f"></i>
+            <span>Facebook</span>
+          </a>
+          <a href="https://www.tiktok.com" target="_blank" rel="noopener" class="social-box">
+            <i class="fa-brands fa-tiktok"></i>
+            <span>TikTok</span>
+          </a>
         </div>
       </div>
 
-      <div class="grid">
-        <article class="card" data-cat="youtube">
-          <div class="thumb">
-            <img src="assets/work1.jpg" alt="قناة يوتيوب شريف خالد" onerror="this.src='https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=800&q=80'">
-            <span class="badge">YouTube</span>
-            <a href="https://www.youtube.com/@sherifkhalid8422" target="_blank" class="overlay"><i class="fa-solid fa-play"></i></a>
-          </div>
-          <div class="card-body">
-            <h3>القناة الرسمية على يوتيوب</h3>
-            <p>أحدث الأغاني، الفيديو كليبات، والفلوجات الكاملة بجودة عالية.</p>
-            <a href="https://www.youtube.com/@sherifkhalid8422" target="_blank" class="watch-link">مشاهدة القناة <i class="fa-solid fa-arrow-left"></i></a>
-          </div>
-        </article>
-
-        <article class="card" data-cat="instagram">
-          <div class="thumb">
-            <img src="assets/work2.jpg" alt="إنستجرام شريف خالد" onerror="this.src='https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?auto=format&fit=crop&w=800&q=80'">
-            <span class="badge">Instagram</span>
-            <a href="https://www.instagram.com/_sherif_khalid/?hl=ar" target="_blank" class="overlay"><i class="fa-brands fa-instagram"></i></a>
-          </div>
-          <div class="card-body">
-            <h3>يوميات وكواليس إنستجرام</h3>
-            <p>ريلز حصرية، جلسات تصوير، وتغطية حية للجولات والفعاليات.</p>
-            <a href="https://www.instagram.com/_sherif_khalid/?hl=ar" target="_blank" class="watch-link">متابعة على إنستجرام <i class="fa-solid fa-arrow-left"></i></a>
-          </div>
-        </article>
-
-        <article class="card" data-cat="facebook">
-          <div class="thumb">
-            <img src="assets/work3.jpg" alt="فيسبوك وتيك توك شريف خالد" onerror="this.src='https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80'">
-            <span class="badge">Facebook & TikTok</span>
-            <a href="https://www.facebook.com/sherif770" target="_blank" class="overlay"><i class="fa-brands fa-facebook-f"></i></a>
-          </div>
-          <div class="card-body">
-            <h3>المقاطع الأكثر تفاعلاً</h3>
-            <p>سلسلة الفيديوهات الترفيهية والمقالب والمحتوى السريع منذ ٢٠١٨.</p>
-            <a href="https://www.facebook.com/sherif770" target="_blank" class="watch-link">زيارة الصفحة الرسمية <i class="fa-solid fa-arrow-left"></i></a>
-          </div>
-        </article>
+      <div class="photo-card">
+        <img src="assets/hero.jpg" alt="شريف خالد" onerror="this.src='https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80'">
+        <div class="tag-float">
+          <strong class="en">EST. 2018</strong>
+          <small>تيك توك • يوتيوب • موسيقى</small>
+        </div>
       </div>
     </div>
-  </main>
+  </section>
+
+  <!-- الفيديو المثبت في الصفحة -->
+  <section id="featured-video" class="cinema-section">
+    <div class="container">
+      <div class="cinema-header">
+        <div>
+          <span class="en">PINNED OFFICIAL RELEASE</span>
+          <h2>مهرجان بابا ياض — شريف خالد</h2>
+        </div>
+        <div class="cinema-meta">إخراج: محمد زيتونة • إنتاج: SK / Mana Production</div>
+      </div>
+
+      <div class="cinema-frame">
+        <div class="top-mask"></div>
+
+        <!-- بوستر مخصص يظهر أول ما الموقع يفتح -->
+        <div class="custom-poster" id="customPoster" onclick="playVideo()">
+          <button type="button" class="play-trigger" aria-label="تشغيل الفيديو">
+            <i class="fa-solid fa-play"></i>
+          </button>
+          <div class="poster-title">بابا ياض — BABA YAD</div>
+          <div class="poster-sub">اضغط للتشغيل المباشر داخل الموقع</div>
+        </div>
+
+        <iframe
+          id="ytPlayer"
+          src="https://www.youtube.com/embed/L9VN7d_3Z7U?rel=0&modestbranding=1&showinfo=0&iv_load_policy=3"
+          title="Baba Yad Official Video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
 
   <footer>
     <div class="container en">SHERIF KHALID OFFICIAL © 2026</div>
   </footer>
 
   <script>
-    document.getElementById('menuBtn').onclick = () => document.getElementById('navMenu').classList.toggle('open');
-    const btns = document.querySelectorAll('.tab-btn');
-    const cards = document.querySelectorAll('.card');
-    btns.forEach(btn => {
-      btn.onclick = () => {
-        btns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const cat = btn.dataset.cat;
-        cards.forEach(c => c.style.display = (cat === 'all' || c.dataset.cat === cat) ? 'block' : 'none');
-      };
-    });
+    document.getElementById('menuBtn').onclick = () => {
+      document.getElementById('navMenu').classList.toggle('open');
+    };
+
+    function playVideo() {
+      const poster = document.getElementById('customPoster');
+      const iframe = document.getElementById('ytPlayer');
+      poster.classList.add('playing');
+      iframe.src = "https://www.youtube.com/embed/L9VN7d_3Z7U?autoplay=1&rel=0&modestbranding=1&showinfo=0&iv_load_policy=3";
+    }
   </script>
 </body>
 </html>
