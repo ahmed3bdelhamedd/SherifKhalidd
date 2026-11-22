@@ -32,7 +32,47 @@
       position: relative;
     }
 
-    /* فيديو الخلفية الصامت المستمر كأنه GIF */
+    /* إنترو افتتاحي للموقع */
+    #siteIntro {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: #050507;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      cursor: pointer;
+      transition: opacity 0.65s ease, visibility 0.65s ease;
+    }
+
+    #siteIntro.done {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .intro-brand {
+      font-size: clamp(2.6rem, 8vw, 5.2rem);
+      color: #fff;
+      animation: introPulse 1.1s ease-out;
+    }
+
+    .intro-sub {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    @keyframes introPulse {
+      0% { opacity: 0; transform: skewX(-7deg) scale(0.92); }
+      100% { opacity: 1; transform: skewX(-7deg) scale(1.06); }
+    }
+
+    /* فيديو الخلفية الصامت بإضاءة أوضح */
     .ambient-video-bg {
       position: fixed;
       inset: 0;
@@ -46,8 +86,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.22;
-      filter: saturate(0.85) contrast(1.06);
+      opacity: 0.36;
+      filter: brightness(1.12) contrast(1.06);
     }
 
     .ambient-overlay {
@@ -55,8 +95,12 @@
       inset: 0;
       z-index: -1;
       pointer-events: none;
-      background:
-        linear-gradient(180deg, rgba(5, 5, 7, 0.68) 0%, rgba(5, 5, 7, 0.78) 50%, rgba(5, 5, 7, 0.92) 100%);
+      background: linear-gradient(
+        180deg,
+        rgba(5, 5, 7, 0.52) 0%,
+        rgba(5, 5, 7, 0.64) 55%,
+        rgba(5, 5, 7, 0.84) 100%
+      );
     }
 
     .num { font-family: 'Plus Jakarta Sans', sans-serif; }
@@ -145,15 +189,15 @@
 
     /* Main Seamless Flow */
     .main-flow {
-      padding: 64px 0 90px;
+      padding: 60px 0 90px;
     }
 
     .top-intro {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
-      gap: 48px;
+      gap: 44px;
       align-items: center;
-      margin-bottom: 72px;
+      margin-bottom: 64px;
     }
 
     h1 .hero-title {
@@ -166,7 +210,7 @@
     }
 
     .intro-text {
-      color: #d4d4d8;
+      color: #e4e4e7;
       font-size: clamp(1.02rem, 1.4vw, 1.12rem);
       line-height: 1.9;
       max-width: 540px;
@@ -199,43 +243,64 @@
 
     .lead-portrait {
       width: 100%;
+      max-width: 430px;
+      margin-inline: auto;
       aspect-ratio: 4 / 5;
-      max-height: 580px;
+      max-height: 520px;
       object-fit: cover;
       object-position: center top;
-      border-radius: 24px;
+      border-radius: 22px;
       display: block;
       box-shadow: 0 28px 65px rgba(0, 0, 0, 0.75);
     }
 
-    /* Seamless Photo Stream (بدون كروت أو حدود مكدسة) */
-    .stream-heading {
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
+    .flow-title {
+      font-size: clamp(1.45rem, 2.8vw, 2rem);
       font-weight: 900;
       color: #fff;
-      margin-bottom: 28px;
+      margin-bottom: 22px;
+      margin-top: 24px;
     }
 
+    /* عرض الأغنية */
+    .track-player {
+      max-width: 860px;
+      aspect-ratio: 16 / 9;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #09090d;
+      margin-bottom: 56px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
+    }
+
+    .track-player iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* تصغير الصور وشبكة أوسع */
     .photo-stream {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
       align-items: start;
     }
 
     .photo-stream img {
       width: 100%;
-      aspect-ratio: 4 / 5;
+      aspect-ratio: 1 / 1;
       object-fit: cover;
       object-position: center top;
-      border-radius: 20px;
+      border-radius: 16px;
       display: block;
       cursor: pointer;
-      transition: transform 0.35s ease, opacity 0.35s ease;
+      transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
     .photo-stream img:hover {
-      transform: scale(1.02);
+      transform: scale(1.025);
       opacity: 0.95;
     }
 
@@ -256,7 +321,7 @@
 
     .lightbox-panel {
       position: relative;
-      max-width: 780px;
+      max-width: 760px;
       width: 100%;
     }
 
@@ -344,7 +409,8 @@
     }
 
     @media (max-width: 900px) {
-      .top-intro { grid-template-columns: 1fr; gap: 32px; margin-bottom: 52px; }
+      .top-intro { grid-template-columns: 1fr; gap: 32px; margin-bottom: 48px; }
+      .photo-stream { grid-template-columns: repeat(2, 1fr); gap: 14px; }
       .footer-grid { grid-template-columns: 1fr; gap: 24px; }
 
       nav {
@@ -369,13 +435,19 @@
       .container { padding: 0 18px; }
       .main-flow { padding: 36px 0 64px; }
       .stats-inline { gap: 22px; }
-      .photo-stream { grid-template-columns: 1fr; gap: 16px; }
+      .photo-stream { grid-template-columns: repeat(2, 1fr); gap: 10px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- خلفية الفيديو الصامت المستمرة كـ GIF -->
+  <!-- إنترو افتتاحي للموقع -->
+  <div id="siteIntro" onclick="dismissIntro()">
+    <span class="clip-brand-font intro-brand">SHERIF KHALID</span>
+    <span class="intro-sub">OFFICIAL HUB</span>
+  </div>
+
+  <!-- فيديو الخلفية الصامت بإضاءة أوضح -->
   <div class="ambient-video-bg" aria-hidden="true">
     <video autoplay muted loop playsinline preload="auto">
       <source src="assts/shx.mp4" type="video/mp4">
@@ -416,7 +488,16 @@
         <img class="lead-portrait" src="assts/sherif_khalid7.jpg" alt="شريف خالد">
       </section>
 
-      <h2 class="stream-heading">الصور</h2>
+      <h2 class="flow-title">بابا ياض</h2>
+      <div class="track-player">
+        <iframe
+          src="https://drive.google.com/file/d/1-lU7XJ8MST3x_Mo7UfRbabdMzoVzhFSf/preview"
+          allow="autoplay; fullscreen"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <h2 class="flow-title">الصور</h2>
       <div class="photo-stream">
         <img src="assts/sherif_khalid2.jpg" alt="شريف خالد" onclick="openLightbox(this.src)">
         <img src="assts/sherif_khahid.jpg" alt="شريف خالد" onclick="openLightbox(this.src)">
@@ -438,6 +519,12 @@
 
   <script src="layout.js"></script>
   <script>
+    const siteIntro = document.getElementById('siteIntro');
+    function dismissIntro() {
+      if (siteIntro) siteIntro.classList.add('done');
+    }
+    setTimeout(dismissIntro, 1300);
+
     function openLightbox(src) {
       const lb = document.getElementById('lightbox');
       const img = document.getElementById('lightboxImg');
