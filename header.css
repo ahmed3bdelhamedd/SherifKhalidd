@@ -1,0 +1,119 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 300;
+  background: rgba(5, 5, 7, 0.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 16px 0;
+}
+
+.site-header .container {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+}
+
+.site-header .nav-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  gap: 20px;
+}
+
+.site-header .brand {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.site-header .clip-brand-font {
+  font-family: 'Anton', 'Archivo Black', sans-serif;
+  font-style: italic;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.96;
+  display: inline-block;
+  transform: skewX(-7deg) scaleY(1.06);
+}
+
+.site-header .brand-tag {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #e11d48;
+  border: 1px solid rgba(225, 29, 72, 0.4);
+  background: rgba(225, 29, 72, 0.12);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.site-header nav {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+
+.site-header nav a {
+  text-decoration: none;
+  color: #a1a1aa;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.site-header nav a:hover,
+.site-header nav a.active {
+  color: #ffffff;
+}
+
+.site-header nav a.active {
+  color: #e11d48;
+}
+
+.site-header .menu-btn {
+  display: none;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-family: 'Cairo', sans-serif;
+  font-weight: 800;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .site-header nav {
+    display: none;
+    position: fixed;
+    top: 66px;
+    right: 0;
+    left: 0;
+    background: rgba(5, 5, 7, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    flex-direction: column;
+    padding: 22px 20px;
+    gap: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 290;
+  }
+
+  .site-header nav.open {
+    display: flex;
+  }
+
+  .site-header .menu-btn {
+    display: inline-block;
+  }
+}
