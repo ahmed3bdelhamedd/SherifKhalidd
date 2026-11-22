@@ -11,14 +11,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Cairo:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #06070a;
-      --card: rgba(255, 255, 255, 0.03);
-      --card-hover: rgba(255, 255, 255, 0.06);
-      --border: rgba(255, 255, 255, 0.09);
-      --text: #f8fafc;
+      --bg: #050709;
+      --panel: rgba(12, 16, 20, 0.72);
+      --panel-hover: rgba(18, 24, 30, 0.85);
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #f1f5f9;
       --muted: #94a3b8;
-      --accent: #8b5cf6;
-      --accent-2: #22d3ee;
+      --accent: #10b981;
+      --accent-soft: rgba(16, 185, 129, 0.14);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
@@ -32,9 +32,35 @@
       min-height: 100dvh;
       display: flex;
       flex-direction: column;
-      background-image:
-        radial-gradient(circle at 80% 10%, rgba(139, 92, 246, 0.14), transparent 38%),
-        radial-gradient(circle at 15% 40%, rgba(34, 211, 238, 0.08), transparent 38%);
+      position: relative;
+    }
+
+    /* خلفية الفيديو المستمرة بـ opacity واطي وتسويد دارك */
+    .bg-video-layer {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      overflow: hidden;
+      pointer-events: none;
+      background: #050709;
+    }
+
+    .bg-video-layer video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.13;
+      filter: grayscale(35%) contrast(1.08);
+    }
+
+    .bg-dark-scrim {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 80% 15%, rgba(16, 185, 129, 0.09), transparent 42%),
+        linear-gradient(180deg, rgba(5, 7, 9, 0.78) 0%, rgba(5, 7, 9, 0.88) 55%, rgba(5, 7, 9, 0.96) 100%);
     }
 
     .num { font-family: 'Plus Jakarta Sans', sans-serif; }
@@ -56,7 +82,7 @@
       position: sticky;
       top: 0;
       z-index: 300;
-      background: rgba(6, 7, 10, 0.85);
+      background: rgba(5, 7, 9, 0.82);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
@@ -85,11 +111,11 @@
       font-size: 0.68rem;
       font-weight: 800;
       letter-spacing: 0.1em;
-      color: var(--accent-2);
-      border: 1px solid rgba(34, 211, 238, 0.35);
-      background: rgba(34, 211, 238, 0.08);
+      color: var(--accent);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      background: var(--accent-soft);
       padding: 2px 8px;
-      border-radius: 999px;
+      border-radius: 6px;
       transform: skewX(7deg);
     }
 
@@ -114,12 +140,12 @@
     }
 
     nav a.active {
-      color: var(--accent-2);
+      color: var(--accent);
     }
 
     .menu-btn {
       display: none;
-      background: var(--card);
+      background: var(--panel);
       border: 1px solid var(--border);
       color: #fff;
       padding: 8px 14px;
@@ -132,7 +158,7 @@
 
     /* Hero */
     .hero {
-      padding: 56px 0 36px;
+      padding: 58px 0 38px;
     }
 
     .hero-grid {
@@ -149,14 +175,14 @@
       font-weight: 800;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--accent-2);
+      color: var(--accent);
       margin-bottom: 12px;
     }
 
     h1 .hero-title {
       display: block;
       font-size: clamp(3rem, 7vw, 5.7rem);
-      background: linear-gradient(135deg, #ffffff 30%, #c4b5fd 70%, #67e8f9 100%);
+      background: linear-gradient(180deg, #ffffff 35%, #94a3b8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       transform-origin: right center;
@@ -176,11 +202,11 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 14px;
       max-width: 560px;
-      margin-bottom: 24px;
     }
 
     .stat-card {
-      background: var(--card);
+      background: var(--panel);
+      backdrop-filter: blur(12px);
       border: 1px solid var(--border);
       border-radius: 18px;
       padding: 18px 14px;
@@ -189,8 +215,8 @@
 
     .stat-card:hover {
       transform: translateY(-3px);
-      background: var(--card-hover);
-      border-color: rgba(139, 92, 246, 0.45);
+      background: var(--panel-hover);
+      border-color: rgba(16, 185, 129, 0.4);
     }
 
     .stat-num {
@@ -207,51 +233,13 @@
       margin-top: 6px;
     }
 
-    .social-links {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      max-width: 560px;
-    }
-
-    .social-item {
-      text-decoration: none;
-      color: #fff;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 14px 10px;
-      text-align: center;
-      transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
-    }
-
-    .social-item:hover {
-      transform: translateY(-2px);
-      border-color: var(--accent-2);
-      background: rgba(34, 211, 238, 0.06);
-    }
-
-    .social-item strong {
-      display: block;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.88rem;
-      font-weight: 800;
-    }
-
-    .social-item span {
-      display: block;
-      font-size: 0.72rem;
-      color: var(--muted);
-      font-weight: 700;
-      margin-top: 3px;
-    }
-
     .hero-photo {
       border-radius: 26px;
       padding: 10px;
-      background: linear-gradient(145deg, rgba(139, 92, 246, 0.22), rgba(34, 211, 238, 0.08));
+      background: var(--panel);
+      backdrop-filter: blur(12px);
       border: 1px solid var(--border);
-      box-shadow: 0 28px 65px -22px rgba(0, 0, 0, 0.88);
+      box-shadow: 0 28px 65px -22px rgba(0, 0, 0, 0.9);
     }
 
     .hero-photo img {
@@ -282,7 +270,7 @@
       font-weight: 800;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--accent-2);
+      color: var(--accent);
       display: block;
       margin-bottom: 4px;
     }
@@ -293,7 +281,7 @@
       color: #fff;
     }
 
-    /* Instagram Reel Video (9 / 16) */
+    /* Reel Video (9 / 16) */
     .reel-section {
       padding: 44px 0 36px;
     }
@@ -309,8 +297,9 @@
       aspect-ratio: 9 / 16;
       border-radius: 26px;
       padding: 8px;
-      background: linear-gradient(145deg, rgba(139, 92, 246, 0.35), rgba(34, 211, 238, 0.18));
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: var(--panel);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(16, 185, 129, 0.25);
       box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.92);
     }
 
@@ -320,7 +309,7 @@
       object-fit: cover;
       border-radius: 19px;
       display: block;
-      background: #040507;
+      background: #050709;
     }
 
     /* Gallery */
@@ -337,7 +326,7 @@
     .gallery-card {
       border-radius: 20px;
       overflow: hidden;
-      background: #0b0d12;
+      background: var(--panel);
       border: 1px solid var(--border);
       aspect-ratio: 4 / 5;
       cursor: pointer;
@@ -346,7 +335,7 @@
 
     .gallery-card:hover {
       transform: translateY(-4px);
-      border-color: rgba(139, 92, 246, 0.5);
+      border-color: rgba(16, 185, 129, 0.45);
     }
 
     .gallery-card img {
@@ -367,7 +356,7 @@
       position: fixed;
       inset: 0;
       z-index: 999;
-      background: rgba(5, 6, 9, 0.92);
+      background: rgba(5, 7, 9, 0.92);
       backdrop-filter: blur(16px);
       display: none;
       align-items: center;
@@ -383,7 +372,7 @@
       width: 100%;
       border-radius: 22px;
       overflow: hidden;
-      background: #0b0d12;
+      background: #090c10;
       border: 1px solid var(--border);
     }
 
@@ -392,7 +381,7 @@
       max-height: 82dvh;
       object-fit: contain;
       display: block;
-      background: #06070a;
+      background: #050709;
     }
 
     .lightbox-close {
@@ -402,7 +391,7 @@
       padding: 8px 14px;
       border-radius: 10px;
       border: 1px solid var(--border);
-      background: rgba(6, 7, 10, 0.88);
+      background: rgba(5, 7, 9, 0.88);
       color: #fff;
       font-family: 'Cairo', sans-serif;
       font-weight: 800;
@@ -414,7 +403,8 @@
     footer {
       margin-top: auto;
       border-top: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.015);
+      background: rgba(5, 7, 9, 0.82);
+      backdrop-filter: blur(14px);
       padding: 40px 0 26px;
     }
 
@@ -457,7 +447,7 @@
     }
 
     .footer-links a:hover {
-      color: var(--accent-2);
+      color: var(--accent);
     }
 
     .footer-bottom {
@@ -482,7 +472,7 @@
         top: 66px;
         right: 0;
         left: 0;
-        background: rgba(7, 8, 12, 0.98);
+        background: rgba(6, 8, 11, 0.98);
         backdrop-filter: blur(20px);
         flex-direction: column;
         padding: 22px 20px;
@@ -502,11 +492,6 @@
       .stat-num { font-size: 1.25rem; }
       .stat-label { font-size: 0.72rem; }
 
-      .social-links { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-      .social-item { padding: 12px 6px; border-radius: 14px; }
-      .social-item strong { font-size: 0.78rem; }
-      .social-item span { font-size: 0.68rem; }
-
       .reel-frame { max-width: 340px; border-radius: 22px; }
       .reel-frame video { border-radius: 16px; }
 
@@ -516,6 +501,14 @@
   </style>
 </head>
 <body>
+
+  <!-- خلفية الفيديو المستمرة للموقع -->
+  <div class="bg-video-layer" aria-hidden="true">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="assts/shx.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="bg-dark-scrim" aria-hidden="true"></div>
 
   <div id="site-header"></div>
 
@@ -544,21 +537,6 @@
             <div class="stat-num num counter" data-target="1" data-suffix="M+">0</div>
             <div class="stat-label">متابع على YouTube</div>
           </div>
-        </div>
-
-        <div class="social-links">
-          <a href="https://www.instagram.com/_sherif_khalid/?hl=ar" target="_blank" rel="noopener" class="social-item">
-            <strong>Instagram</strong>
-            <span>3M+ Followers</span>
-          </a>
-          <a href="https://www.tiktok.com" target="_blank" rel="noopener" class="social-item">
-            <strong>TikTok</strong>
-            <span>12M+ Followers</span>
-          </a>
-          <a href="https://www.youtube.com/@sherifkhalid8422" target="_blank" rel="noopener" class="social-item">
-            <strong>YouTube</strong>
-            <span>1M+ Subscribers</span>
-          </a>
         </div>
       </div>
 
