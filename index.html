@@ -8,7 +8,7 @@
   <link rel="apple-touch-icon" href="assts/sherif_khalid4.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Cairo:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Cairo:wght@400;600;700;900&family=Lalezar&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #050507;
@@ -111,14 +111,21 @@
     .container { max-width: 1220px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
     .clip-brand-font {
-      font-family: 'Anton', 'Archivo Black', sans-serif;
+      font-family: 'Anton', 'Archivo Black', 'Lalezar', 'Cairo', sans-serif;
       font-style: italic;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: -0.01em;
-      line-height: 0.96;
+      line-height: 1.04;
       display: inline-block;
       transform: skewX(-7deg) scaleY(1.06);
+    }
+
+    html[lang="ar"] .clip-brand-font {
+      font-family: 'Lalezar', 'Cairo', 'Anton', sans-serif;
+      font-style: normal;
+      letter-spacing: 0;
+      transform: skewX(-7deg) scaleY(1.05);
     }
 
     /* Header */
@@ -249,7 +256,7 @@
       font-size: clamp(3.2rem, 7.5vw, 6.2rem);
       color: #fff;
       transform-origin: left center;
-      margin-bottom: 22px;
+      margin-bottom: 34px;
       text-shadow: 0 12px 32px rgba(0, 0, 0, 0.7);
     }
 
@@ -263,13 +270,6 @@
       gap: 14px;
       max-width: 600px;
       margin-bottom: 32px;
-    }
-
-    .bio-heading {
-      font-size: clamp(1.1rem, 1.8vw, 1.35rem);
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 2px;
     }
 
     .bio-block p {
@@ -514,7 +514,7 @@
 
   <!-- إنترو افتتاحي للموقع -->
   <div id="siteIntro" onclick="dismissIntro()">
-    <span class="clip-brand-font intro-brand">SHERIF KHALID</span>
+    <span class="clip-brand-font intro-brand" id="introTitle">SHERIF KHALID</span>
     <span class="intro-sub">OFFICIAL HUB</span>
   </div>
 
@@ -530,7 +530,7 @@
     <div class="container nav-wrap">
       <a href="index.html" class="brand">
         <span class="brand-tag">OFFICIAL</span>
-        <span class="clip-brand-font">SHERIF KHALID</span>
+        <span class="clip-brand-font" id="headerBrandName">SHERIF KHALID</span>
       </a>
 
       <div class="nav-right">
@@ -552,11 +552,10 @@
       <section class="top-intro">
         <div>
           <h1>
-            <span class="clip-brand-font hero-title">SHERIF KHALID</span>
+            <span class="clip-brand-font hero-title" id="heroMainName">SHERIF KHALID</span>
           </h1>
 
           <div class="bio-block">
-            <h2 class="bio-heading" data-i18n="bioHeading">Sherif Khalid | شريف خالد</h2>
             <p data-i18n-html="bioP1">
               Sherif Khalid is a 28-year-old Egyptian content creator and influencer born in <span class="no-wrap">Al-Amireya</span>, Cairo. He is one of the ambitious young figures who has built a strong presence across social media platforms, especially TikTok.
             </p>
@@ -622,7 +621,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="index.html" class="brand">
-            <span class="clip-brand-font">SHERIF KHALID</span>
+            <span class="clip-brand-font" id="footerBrandName">SHERIF KHALID</span>
           </a>
           <p data-i18n="footerDesc">
             Official Hub for Sherif Khalid — over 16 million followers across TikTok, Instagram, and YouTube.
@@ -662,12 +661,12 @@
         dir: 'ltr',
         lang: 'en',
         btnText: 'AR',
+        brandName: 'SHERIF KHALID',
         menuLabel: 'Menu',
         navHome: 'Home',
         navWorks: 'Works & Videos',
         navJourney: 'Journey',
         navContact: 'Contact & Bookings',
-        bioHeading: 'Sherif Khalid | شريف خالد',
         bioP1: 'Sherif Khalid is a 28-year-old Egyptian content creator and influencer born in <span class="no-wrap">Al-Amireya</span>, Cairo. He is one of the ambitious young figures who has built a strong presence across social media platforms, especially TikTok.',
         bioP2: 'He started his content creation journey in 2018, and through determination, passion, and ambition, he built a large audience of millions of followers and achieved notable success in the social media space.',
         bioP3: 'His ambitions went beyond content creation into music and performance, taking on diverse experiences that helped diversify his career and expand his reach with audiences.',
@@ -687,12 +686,12 @@
         dir: 'rtl',
         lang: 'ar',
         btnText: 'EN',
+        brandName: 'شريف خالد',
         menuLabel: 'القائمة',
         navHome: 'الرئيسية',
         navWorks: 'الأعمال والفيديوهات',
         navJourney: 'الرحلة',
         navContact: 'التواصل والإعلانات',
-        bioHeading: 'شريف خالد | Sherif Khalid',
         bioP1: 'شريف خالد هو صانع محتوى ومؤثر مصري يبلغ من العمر 28 عامًا، وُلد في منطقة الأميرية بمحافظة القاهرة. يُعد من الشخصيات الشابة الطموحة التي استطاعت أن تصنع لنفسها حضورًا مميزًا على منصات التواصل الاجتماعي، وخاصة TikTok.',
         bioP2: 'بدأ رحلته في صناعة المحتوى عام 2018، واستطاع من خلال إصراره وشغفه وطموحه أن يبني قاعدة جماهيرية كبيرة تضم ملايين المتابعين، وأن يحقق نجاحًا ملحوظًا في عالم السوشيال ميديا.',
         bioP3: 'ولم تتوقف طموحاته عند صناعة المحتوى، بل امتدت إلى المجال الفني والغنائي، حيث خاض تجارب متعددة ساهمت في تنويع مسيرته وتوسيع حضوره الجماهيري.',
@@ -720,6 +719,11 @@
 
       const langBtn = document.getElementById('langBtn');
       if (langBtn) langBtn.textContent = dict.btnText;
+
+      ['introTitle', 'headerBrandName', 'heroMainName', 'footerBrandName'].forEach((id) => {
+        const nameEl = document.getElementById(id);
+        if (nameEl) nameEl.textContent = dict.brandName;
+      });
 
       document.querySelectorAll('[data-i18n]').forEach((el) => {
         const key = el.getAttribute('data-i18n');
