@@ -1,118 +1,582 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>الرحلة | شريف خالد - منذ ٢٠١٨</title>
-  <link rel="icon" href="assets/favicon.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Journey — SHERIF KHALID</title>
+  <link rel="icon" href="assts/sherif_khalid4.jpg" type="image/jpeg" />
+  <link rel="apple-touch-icon" href="assts/sherif_khalid4.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Cairo:wght@400;600;700;900&family=Lalezar&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root { --bg: #050507; --surface: rgba(255,255,255,0.03); --border: rgba(255,255,255,0.08); --text: #fff; --muted: #9ca3af; --accent: #e11d48; }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: var(--bg); color: var(--text); font-family: 'Cairo', sans-serif; min-height: 100vh; display: flex; flex-direction: column; }
-    .en { font-family: 'Syne', sans-serif; letter-spacing: 0.05em; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; width: 100%; }
-
-    header { position: sticky; top: 0; z-index: 100; background: rgba(5,5,7,0.88); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 16px 0; }
-    .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
-    .brand { text-decoration: none; color: #fff; font-weight: 800; font-size: 1.2rem; display: flex; align-items: center; gap: 8px; }
-    .brand span.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
-    nav { display: flex; gap: 28px; }
-    nav a { text-decoration: none; color: var(--muted); font-weight: 700; font-size: 0.95rem; transition: 0.3s; }
-    nav a:hover, nav a.active { color: var(--accent); }
-    .menu-btn { display: none; background: none; border: none; color: #fff; font-size: 1.4rem; cursor: pointer; }
-
-    main { flex: 1; padding: 60px 0; }
-    .bio-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 40px; align-items: center; margin-bottom: 64px; }
-    .bio-img img { width: 100%; height: 420px; object-fit: cover; border-radius: 22px; border: 1px solid var(--border); }
-    .bio-text span { color: var(--accent); font-weight: 700; font-size: 0.85rem; }
-    .bio-text h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; margin: 8px 0 16px; }
-    .bio-text p { color: var(--muted); line-height: 1.8; font-size: 1.05rem; margin-bottom: 16px; }
-
-    .timeline { display: flex; flex-direction: column; gap: 20px; }
-    .step {
-      display: grid; grid-template-columns: 110px 1fr; gap: 24px; align-items: center;
-      background: var(--surface); border: 1px solid var(--border); padding: 26px; border-radius: 20px;
+    :root {
+      --bg: #050507;
+      --text: #f8fafc;
+      --muted: #a1a1aa;
+      --accent: #e11d48;
+      --line: rgba(255, 255, 255, 0.09);
     }
-    .year { font-size: 1.9rem; font-weight: 800; color: var(--accent); }
-    .step h3 { font-size: 1.2rem; margin-bottom: 6px; }
-    .step p { color: var(--muted); font-size: 0.95rem; }
 
-    footer { border-top: 1px solid var(--border); padding: 24px 0; text-align: center; color: var(--muted); font-size: 0.88rem; }
-    @media (max-width: 880px) {
-      .bio-grid, .step { grid-template-columns: 1fr; }
-      nav { display: none; position: absolute; top: 65px; right: 0; width: 100%; background: #08080b; flex-direction: column; padding: 24px; border-bottom: 1px solid var(--border); }
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    html { overflow-x: clip; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', 'Cairo', sans-serif;
+      overflow-x: clip;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    html[lang="ar"] body {
+      font-family: 'Cairo', 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* خلفية الفيديو الصامت */
+    .ambient-video-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      overflow: hidden;
+      background: #050507;
+    }
+
+    .ambient-video-bg video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.36;
+      filter: brightness(1.12) contrast(1.06);
+    }
+
+    .ambient-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background: linear-gradient(
+        180deg,
+        rgba(5, 5, 7, 0.56) 0%,
+        rgba(5, 5, 7, 0.72) 55%,
+        rgba(5, 5, 7, 0.9) 100%
+      );
+    }
+
+    .num { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; width: 100%; }
+
+    .clip-brand-font {
+      font-family: 'Anton', 'Archivo Black', sans-serif;
+      font-style: italic;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      line-height: 0.96;
+      display: inline-block;
+      transform: skewX(-7deg) scaleY(1.06);
+    }
+
+    /* Header */
+    header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 300;
+      width: 100%;
+      background: rgba(5, 5, 7, 0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+      padding: 15px 0;
+    }
+
+    .nav-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+    }
+
+    .brand {
+      direction: rtl;
+      unicode-bidi: isolate;
+      text-decoration: none;
+      color: #fff;
+      font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .brand-tag {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      border: 1px solid rgba(225, 29, 72, 0.45);
+      background: rgba(225, 29, 72, 0.14);
+      padding: 3px 9px;
+      border-radius: 6px;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.94rem;
+      white-space: nowrap;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #fff;
+    }
+
+    nav a.active {
+      color: var(--accent);
+    }
+
+    .lang-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #fff;
+      padding: 7px 13px;
+      border-radius: 10px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .lang-btn:hover {
+      border-color: var(--accent);
+      background: rgba(225, 29, 72, 0.14);
+    }
+
+    .menu-btn {
+      display: none;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-family: 'Cairo', 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    /* Journey Content */
+    .journey-main {
+      padding: 60px 0 90px;
+    }
+
+    .page-heading {
+      font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+      color: #fff;
+      margin-bottom: 14px;
+      text-shadow: 0 12px 32px rgba(0, 0, 0, 0.75);
+    }
+
+    .page-sub {
+      color: var(--muted);
+      font-size: clamp(0.98rem, 1.35vw, 1.08rem);
+      line-height: 1.8;
+      max-width: 650px;
+      margin-bottom: 52px;
+    }
+
+    .no-wrap {
+      white-space: nowrap;
+    }
+
+    .timeline {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding-inline-start: 28px;
+      border-inline-start: 2px solid rgba(225, 29, 72, 0.35);
+    }
+
+    .milestone {
+      position: relative;
+      background: rgba(12, 13, 18, 0.82);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px 26px;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .milestone:hover {
+      transform: translateY(-3px);
+      border-color: rgba(225, 29, 72, 0.45);
+    }
+
+    .milestone::before {
+      content: "";
+      position: absolute;
+      top: 28px;
+      inset-inline-start: -35px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 14px var(--accent);
+    }
+
+    .milestone-year {
+      display: inline-block;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .milestone h2 {
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .milestone p {
+      color: #e4e4e7;
+      font-size: clamp(0.95rem, 1.25vw, 1.04rem);
+      line-height: 1.85;
+    }
+
+    /* Footer */
+    footer.site-footer {
+      margin-top: auto;
+      border-top: 1px solid var(--line);
+      background: rgba(5, 5, 7, 0.88);
+      backdrop-filter: blur(16px);
+      padding: 40px 0 26px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 32px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .footer-brand p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.75;
+      margin-top: 12px;
+      max-width: 340px;
+    }
+
+    .footer-col h3 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 700;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover { color: var(--accent); }
+
+    .footer-bottom {
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    @media (max-width: 960px) {
+      .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+
+      nav {
+        display: none;
+        position: fixed;
+        top: 64px;
+        right: 0;
+        left: 0;
+        background: rgba(5, 5, 7, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px 24px;
+        gap: 16px;
+        border-bottom: 1px solid var(--line);
+        z-index: 290;
+      }
+
       nav.open { display: flex; }
-      .menu-btn { display: block; }
+      .menu-btn { display: inline-block; }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 0 18px; }
+      .journey-main { padding: 36px 0 64px; }
+      .milestone { padding: 20px 18px; border-radius: 18px; }
     }
   </style>
 </head>
 <body>
 
-  <header>
+  <div class="ambient-video-bg" aria-hidden="true">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="assts/shx.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="ambient-overlay" aria-hidden="true"></div>
+
+  <header class="site-header">
     <div class="container nav-wrap">
-      <a href="index.html" class="brand en">SHERIF KHALID <span class="dot"></span></a>
-      <nav id="navMenu">
-        <a href="index.html">الرئيسية</a>
-        <a href="works.html">الأعمال والفيديوهات</a>
-        <a href="journey.html" class="active">الرحلة (منذ ٢٠١٨)</a>
-        <a href="contact.html">التواصل والإعلانات</a>
-      </nav>
-      <button class="menu-btn" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
+      <a href="index.html" class="brand">
+        <span class="brand-tag">OFFICIAL</span>
+        <span class="clip-brand-font">SHERIF KHALID</span>
+      </a>
+
+      <div class="nav-right">
+        <nav id="navMenu">
+          <a href="index.html" data-i18n="navHome">Home</a>
+          <a href="works.html" data-i18n="navWorks">Works & Videos</a>
+          <a href="journey.html" class="active" data-i18n="navJourney">Journey</a>
+          <a href="contact.html" data-i18n="navContact">Contact & Bookings</a>
+        </nav>
+
+        <button class="lang-btn" id="langBtn" type="button" onclick="toggleLanguage()">AR</button>
+        <button class="menu-btn" id="menuBtn" type="button" data-i18n="menuLabel">Menu</button>
+      </div>
     </div>
   </header>
 
-  <main>
+  <main class="journey-main">
     <div class="container">
-      <div class="bio-grid">
-        <div class="bio-img">
-          <img src="assets/about.jpg" alt="رحلة شريف خالد" onerror="this.src='https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80'">
-        </div>
-        <div class="bio-text">
-          <span class="en">THE STORY // 2018 — PRESENT</span>
-          <h1>من شغف البدايات إلى صناعة الهوية</h1>
-          <p>
-            بدأ شريف خالد رحلته في صناعة المحتوى عام ٢٠١٨ في وقت كانت فيه الفيديوهات القصيرة لسه بتشق طريقها في مصر والوطن العربي. اعتمد على العفوية، خفة الظل، والأفكار القريبة من الشباب.
-          </p>
-          <p>
-            مع الوقت، تطورت التجربة من مجرد مقاطع قصيرة على تيك توك إلى حضور قوي على يوتيوب وإنستجرام وفيسبوك، بجانب تقديم أعمال غنائية وجولات جماهيرية.
-          </p>
-        </div>
-      </div>
+      <h1 class="clip-brand-font page-heading" data-i18n="pageHeading">THE JOURNEY</h1>
+      <p class="page-sub" data-i18n="pageSub">
+        From <span class="no-wrap">Al-Amireya</span>, Cairo in 2018 to building a multi-platform audience of over 16 million followers.
+      </p>
 
       <div class="timeline">
-        <div class="step">
-          <div class="year en">2018</div>
-          <div>
-            <h3>الانطلاقة الأولى على تيك توك</h3>
-            <p>بداية نشر الفيديوهات القصيرة وبناء أول قاعدة جماهيرية حقيقية من الصفر.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="year en">2021</div>
-          <div>
-            <h3>التوسع والانتشار العربي</h3>
-            <p>تحقيق ملايين المشاهدات والتعاون مع علامات تجارية وصناع محتوى بارزين.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="year en">2026</div>
-          <div>
-            <h3>مرحلة الموسيقى والفعاليات</h3>
-            <p>إطلاق أعمال غنائية خاصة وتنظيم جولات ولقاءات مباشرة مع الجمهور.</p>
-          </div>
-        </div>
+        <article class="milestone">
+          <span class="milestone-year">ROOTS • CAIRO</span>
+          <h2 data-i18n-html="m1Title">Born in <span class="no-wrap">Al-Amireya</span></h2>
+          <p data-i18n-html="m1Desc">
+            Sherif Khalid, a 28-year-old Egyptian creator, grew up with strong roots in <span class="no-wrap">Al-Amireya</span>, Cairo, shaping an energetic and relatable voice that connected with youth.
+          </p>
+        </article>
+
+        <article class="milestone">
+          <span class="milestone-year">2018 • THE START</span>
+          <h2 data-i18n="m2Title">Launching Into Content Creation</h2>
+          <p data-i18n="m2Desc">
+            He began his content creation journey in 2018, turning consistency, passion, and ambition into viral momentum across social media platforms—especially TikTok.
+          </p>
+        </article>
+
+        <article class="milestone">
+          <span class="milestone-year">MUSIC & ARTISTRY</span>
+          <h2 data-i18n="m3Title">Expanding Into Music & Performance</h2>
+          <p data-i18n="m3Desc">
+            Beyond short-form content, Sherif expanded into music and artistic releases, diversifying his creative path and reaching wider audiences.
+          </p>
+        </article>
+
+        <article class="milestone">
+          <span class="milestone-year">16M+ COMMUNITY</span>
+          <h2 data-i18n="m4Title">Millions Across Platforms</h2>
+          <p data-i18n="m4Desc">
+            Today he commands over 12M+ followers on TikTok, 3M+ on Instagram, and 1M+ on YouTube, continuing to turn ideas into real milestones.
+          </p>
+        </article>
       </div>
     </div>
   </main>
 
-  <footer>
-    <div class="container en">SHERIF KHALID OFFICIAL © 2026</div>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand">
+            <span class="clip-brand-font">SHERIF KHALID</span>
+          </a>
+          <p data-i18n="footerDesc">
+            Official Hub for Sherif Khalid — over 16 million followers across TikTok, Instagram, and YouTube.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h3 data-i18n="footerPagesTitle">Pages</h3>
+          <ul class="footer-links">
+            <li><a href="index.html" data-i18n="navHome">Home</a></li>
+            <li><a href="works.html" data-i18n="navWorks">Works & Videos</a></li>
+            <li><a href="journey.html" data-i18n="navJourney">Journey</a></li>
+            <li><a href="contact.html" data-i18n="navContact">Contact & Bookings</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3 data-i18n="footerPlatformsTitle">Official Platforms</h3>
+          <ul class="footer-links">
+            <li><a href="https://www.instagram.com/_sherif_khalid/?hl=ar" target="_blank" rel="noopener">Instagram (3M+)</a></li>
+            <li><a href="https://www.tiktok.com/@sherifkhalidd" target="_blank" rel="noopener">TikTok (12M+)</a></li>
+            <li><a href="https://www.youtube.com/@sherifkhalid8422" target="_blank" rel="noopener">YouTube (1M+)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span class="num">SHERIF KHALID OFFICIAL © 2026</span>
+        <span data-i18n="rights">ALL RIGHTS RESERVED</span>
+      </div>
+    </div>
   </footer>
 
   <script>
-    document.getElementById('menuBtn').onclick = () => document.getElementById('navMenu').classList.toggle('open');
+    const translations = {
+      en: {
+        dir: 'ltr',
+        lang: 'en',
+        btnText: 'AR',
+        menuLabel: 'Menu',
+        navHome: 'Home',
+        navWorks: 'Works & Videos',
+        navJourney: 'Journey',
+        navContact: 'Contact & Bookings',
+        pageHeading: 'THE JOURNEY',
+        pageSub: 'From <span class="no-wrap">Al-Amireya</span>, Cairo in 2018 to building a multi-platform audience of over 16 million followers.',
+        m1Title: 'Born in <span class="no-wrap">Al-Amireya</span>',
+        m1Desc: 'Sherif Khalid, a 28-year-old Egyptian creator, grew up with strong roots in <span class="no-wrap">Al-Amireya</span>, Cairo, shaping an energetic and relatable voice that connected with youth.',
+        m2Title: 'Launching Into Content Creation',
+        m2Desc: 'He began his content creation journey in 2018, turning consistency, passion, and ambition into viral momentum across social media platforms—especially TikTok.',
+        m3Title: 'Expanding Into Music & Performance',
+        m3Desc: 'Beyond short-form content, Sherif expanded into music and artistic releases, diversifying his creative path and reaching wider audiences.',
+        m4Title: 'Millions Across Platforms',
+        m4Desc: 'Today he commands over 12M+ followers on TikTok, 3M+ on Instagram, and 1M+ on YouTube, continuing to turn ideas into real milestones.',
+        footerDesc: 'Official Hub for Sherif Khalid — over 16 million followers across TikTok, Instagram, and YouTube.',
+        footerPagesTitle: 'Pages',
+        footerPlatformsTitle: 'Official Platforms',
+        rights: 'ALL RIGHTS RESERVED'
+      },
+      ar: {
+        dir: 'rtl',
+        lang: 'ar',
+        btnText: 'EN',
+        menuLabel: 'القائمة',
+        navHome: 'الرئيسية',
+        navWorks: 'الأعمال والفيديوهات',
+        navJourney: 'الرحلة',
+        navContact: 'التواصل والإعلانات',
+        pageHeading: 'الرحلة',
+        pageSub: 'من الأميرية بالقاهرة عام 2018 إلى بناء قاعدة جماهيرية تتخطى 16 مليون متابع عبر المنصات.',
+        m1Title: 'النشأة في الأميرية بالقاهرة',
+        m1Desc: 'شريف خالد صانع محتوى ومؤثر مصري يبلغ من العمر 28 عامًا، وُلد في منطقة الأميرية بمحافظة القاهرة وبدأ منها رحلة قريبة من الجمهور.',
+        m2Title: 'بداية صناعة المحتوى عام 2018',
+        m2Desc: 'بدأ رحلته عام 2018، واستطاع بالإصرار والشغف والطموح تحقيق حضور لافت وملايين المتابعين على منصات التواصل الاجتماعي وخاصة TikTok.',
+        m3Title: 'التوسع في المجال الفني والغنائي',
+        m3Desc: 'امتدت طموحاته إلى الغناء والتجارب الفنية المتنوعة التي أضافت لمسيرته ووسعت نطاق انتشاره الجماهيري.',
+        m4Title: 'نجاح مستمر عبر المنصات',
+        m4Desc: 'يحظى بأكثر من 12 مليون متابع على TikTok و3 ملايين على Instagram ومليون على YouTube، مع استمرار السعي نحو المزيد من الإنجازات.',
+        footerDesc: 'الموقع الرسمي لشريف خالد — جمهور يتخطى 16 مليون متابع عبر TikTok وInstagram وYouTube.',
+        footerPagesTitle: 'الصفحات',
+        footerPlatformsTitle: 'المنصات الرسمية',
+        rights: 'جميع الحقوق محفوظة'
+      }
+    };
+
+    let currentLang = 'en';
+
+    function applyLanguage(lang) {
+      const dict = translations[lang] || translations.en;
+      currentLang = dict.lang;
+      document.documentElement.lang = dict.lang;
+      document.documentElement.dir = dict.dir;
+
+      const langBtn = document.getElementById('langBtn');
+      if (langBtn) langBtn.textContent = dict.btnText;
+
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key] !== undefined) {
+          el.textContent = dict[key];
+        }
+      });
+
+      document.querySelectorAll('[data-i18n-html]').forEach((el) => {
+        const key = el.getAttribute('data-i18n-html');
+        if (dict[key] !== undefined) {
+          el.innerHTML = dict[key];
+        }
+      });
+    }
+
+    function toggleLanguage() {
+      applyLanguage(currentLang === 'en' ? 'ar' : 'en');
+    }
+
+    const navMenu = document.getElementById('navMenu');
+    const menuBtn = document.getElementById('menuBtn');
+
+    if (navMenu && menuBtn) {
+      menuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navMenu.classList.toggle('open');
+      });
+
+      navMenu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => navMenu.classList.remove('open'));
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!navMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+          navMenu.classList.remove('open');
+        }
+      });
+    }
   </script>
 </body>
 </html>
